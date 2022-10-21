@@ -1,3 +1,5 @@
+# 用于快速创建项目基础配置
+
 # Vue 3 + TypeScript + Vite  start 
 - 已引入 vue-router@4
 - 已引入 pinia
@@ -12,3 +14,8 @@
   ```
   <Icon name='xxx' />
   ```
+  
+# install
+```
+pnpm i
+```
