@@ -14,8 +14,11 @@
   ```
   <Icon name='xxx' />
   ```
+ - 已封装基础 axios ，并引入 faker.js
   
 # install
 ```
 pnpm i
+rm -rf .git
+git remote remove origin
 ```
