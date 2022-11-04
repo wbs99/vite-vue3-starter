@@ -10,6 +10,7 @@
     <Icon name='add' />
     <br>
     <CountDown />
+    <ImgLoop />
 
     <router-view></router-view>
   </div>
@@ -17,6 +18,7 @@
 
 <script lang="ts" setup>
 import CountDown from '../demos/CountDown.vue';
+import ImgLoop from '../demos/ImgLoop.vue';
 import { CountStore } from '../store/CountStore';
 const countStore = CountStore()
 
