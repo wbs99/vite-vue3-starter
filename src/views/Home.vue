@@ -8,19 +8,14 @@
     </div>
     <router-link to="/about">about</router-link>
     <Icon name='add' />
-    <br>
-    <CountDown />
-    <ImgLoop />
-
     <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts" setup>
-import CountDown from '../demos/CountDown.vue';
-import ImgLoop from '../demos/ImgLoop.vue';
-import { CountStore } from '../store/CountStore';
-const countStore = CountStore()
+import { useCountStore } from '../store/useCountStore';
+
+const countStore = useCountStore()
 
 
 </script>
