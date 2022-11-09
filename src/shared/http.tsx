@@ -70,15 +70,22 @@ http.instance.interceptors.response.use(
 )
 
 
-
 // demo
 
-// const response = await http.post<{ jwt: string }>('/session', { email: '1134954328@qq.com', code: '' }, { _autoLoading: true })
-//   .catch((error: any) => console.log(error))
+// api/v1/tags?kind=income
+// const response = await http.get<{ resources: Tag[] }>('/tags',
+//   { kind: 'income' },
+//   {
+//     _mock: 'tagIndex',
+//     _autoLoading: true
+//   }
+// )
 
-
-// const response2 = await http.get<{ resources: Tag[] }>('/tags', {
-//   kind: 'expenses',
-//   _mock: 'tagIndex',
-//   _autoLoading: true
-// }).catch((error: any) => console.log(error))
+// api/v1/tags?kind=expenses
+// const response = await http.get<{ resources: Tag[] }>('/tags',
+//   { kind: 'expenses' },
+//   {
+//     _mock: 'tagIndex',
+//     _autoLoading: true
+//   }
+// )
