@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { mockSession } from "../mocks/mock";
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
 type PostConfig = Omit<AxiosRequestConfig, 'url' | 'data' | 'method'>
@@ -25,18 +24,38 @@ export class Http {
   }
 }
 
-const mock = (response: AxiosResponse) => {
-  if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1' && location.hostname !== '192.168.3.57') { return false }
-  switch (response.config?._mock) {
-    case 'session':
-      [response.status, response.data] = mockSession(response.config)
-      return true
-  }
-  return false
-}
-
-
 export const http = new Http('/api/v1')
+
+if (DEBUG) {
+  import('../mocks/mock').then(({ mockSession }) => {
+    const mock = (response: AxiosResponse) => {
+      switch (response.config?._mock) {
+        case 'session':
+          [response.status, response.data] = mockSession(response.config)
+          return true
+      }
+      return false
+    }
+    // mock
+    http.instance.interceptors.response.use(
+      response => {
+        mock(response)
+        if (response.status >= 400) {
+          throw { response }
+        } else {
+          return response
+        }
+      },
+      error => {
+        mock(error.response)
+        if (error.response.status >= 400) {
+          throw error
+        } else {
+          return error.response
+        }
+      })
+  })
+}
 
 // set header
 http.instance.interceptors.request.use(config => {
@@ -53,14 +72,7 @@ http.instance.interceptors.response.use((response) => {
   if (error.response?.config._autoLoading === true) { console.log('加载完成') }
   throw error
 })
-// mock
-http.instance.interceptors.response.use((response) => {
-  mock(response)
-  if (response.status >= 400) { throw { response } } else { return response }
-}, (error) => {
-  mock(error.response)
-  if (error.response.status >= 400) { throw error } else { return error.response }
-})
+
 http.instance.interceptors.response.use(
   response => response,
   (error: AxiosError) => {
