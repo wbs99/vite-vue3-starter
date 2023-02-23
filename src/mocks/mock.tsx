@@ -4,3 +4,4 @@ faker.setLocale('zh_CN');
 
 export { mockSession } from './mockSession'
 export { mockTagIndex } from './mockTagIndex'
+export { mockMe } from './mockMe'

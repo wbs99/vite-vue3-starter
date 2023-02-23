@@ -26,12 +26,16 @@ export class Http {
 
 export const http = new Http('/api/v1')
 
+
 if (DEBUG) {
-  import('../mocks/mock').then(({ mockSession }) => {
+  import('../mocks/mock').then(({ mockSession, mockMe }) => {
     const mock = (response: AxiosResponse) => {
       switch (response.config?._mock) {
         case 'session':
           [response.status, response.data] = mockSession(response.config)
+          return true
+        case 'me':
+          [response.status, response.data] = mockMe(response.config)
           return true
       }
       return false
