@@ -5,7 +5,6 @@ import { createPinia } from 'pinia'
 import Icon from "./components/Icon.vue";
 import '@svgstore';
 
-
 const pinia = createPinia()
 const app = createApp(App)
 app.component("Icon", Icon);
