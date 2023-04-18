@@ -27,40 +27,6 @@ export class Http {
 export const http = new Http('/api/v1')
 
 
-if (DEBUG) {
-  import('../mocks/mock').then(({ mockSession, mockMe }) => {
-    const mock = (response: AxiosResponse) => {
-      switch (response.config?._mock) {
-        case 'session':
-          [response.status, response.data] = mockSession(response.config)
-          return true
-        case 'me':
-          [response.status, response.data] = mockMe(response.config)
-          return true
-      }
-      return false
-    }
-    // mock
-    http.instance.interceptors.response.use(
-      response => {
-        mock(response)
-        if (response.status >= 400) {
-          throw { response }
-        } else {
-          return response
-        }
-      },
-      error => {
-        mock(error.response)
-        if (error.response.status >= 400) {
-          throw error
-        } else {
-          return error.response
-        }
-      })
-  })
-}
-
 // set header
 http.instance.interceptors.request.use(config => {
   const jwt = localStorage.getItem('jwt')
@@ -68,22 +34,54 @@ http.instance.interceptors.request.use(config => {
   if (config._autoLoading === true) { console.log('加载中') }
   return config
 })
-// loading
-http.instance.interceptors.response.use((response) => {
-  if (response.config._autoLoading === true) { console.log('加载完成') }
-  return response
-}, (error: AxiosError) => {
-  if (error.response?.config._autoLoading === true) { console.log('加载完成') }
-  throw error
-})
 
+// loading
 http.instance.interceptors.response.use(
-  response => response,
+  response => {
+    if (response.config._autoLoading === true) {
+      console.log('加载完成')
+    }
+    return response
+  },
   (error: AxiosError) => {
-    if (error.response?.status === 429) { alert('请求太频繁') }
+    if (error.response?.config._autoLoading === true) {
+      console.log('加载完成')
+    }
+    throw error
+  })
+
+// errors
+http.instance.interceptors.response.use(
+  response => {
+    return response
+  },
+  (error: AxiosError) => {
+    if (error.response) {
+      const { status } = error.response
+      const fn = table[status]
+      fn?.()
+    }
     throw error
   }
 )
+
+const table: Record<string, undefined | (() => void)> = {
+  401: () => {
+    // router.navigate('/login')
+  },
+  402: () => {
+    window.alert('请付费后观看')
+  },
+  403: () => {
+    window.alert('没有权限')
+  },
+  429: () => {
+    window.alert('请求过于频繁')
+  },
+  500: () => {
+    window.alert('服务器错误')
+  }
+}
 
 
 // demo

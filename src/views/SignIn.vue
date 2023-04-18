@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 import { useRoute, useRouter } from 'vue-router';
-import { getJwtApi } from '../apis';
+import { getJwtApi } from '../api';
 import { fetchMe } from '../shared/me';
 const route = useRoute()
 const router = useRouter()

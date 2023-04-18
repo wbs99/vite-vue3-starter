@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { fetchMeApi } from "../apis";
+import { fetchMeApi } from "../api";
 
 export let mePromise: Promise<AxiosResponse<{
   resource: {
