@@ -7,7 +7,7 @@ import { useNProgress } from '@vueuse/integrations/useNProgress'
 const routes: RouteRecordRaw[] = [
   { path: "/", redirect: "/home" },
   {
-    path: '/sign_in', component: () => import("../views/SignIn.vue"),
+    path: '/login', component: () => import("../views/Login.vue"),
   },
   {
     path: '/home', component: () => import("../views/Home.vue"),
@@ -22,7 +22,7 @@ const whiteList: Record<string, 'exact' | 'startsWith'> = {
   '/': 'exact',
   '/start': 'exact',
   '/welcome': 'startsWith',
-  '/sign_in': 'startsWith',
+  '/login': 'startsWith',
 }
 
 const { isLoading } = useNProgress()
@@ -39,7 +39,7 @@ router.beforeEach((to) => {
   }
   return mePromise!.then(
     () => true,
-    () => `/sign_in?return_to=${to.path}`
+    () => `/login?return_to=${to.path}`
   )
 })
 
