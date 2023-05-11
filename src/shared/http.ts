@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { getJwt, removeJwt } from "./storage";
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
 type PostConfig = Omit<AxiosRequestConfig, 'url' | 'data' | 'method'>
@@ -29,7 +30,7 @@ export const http = new Http('/api/v1')
 
 // set header
 http.instance.interceptors.request.use(config => {
-  const jwt = localStorage.getItem('jwt')
+  const jwt = getJwt()
   if (jwt) { config.headers!.Authorization = `Bearer ${jwt}` }
   if (config._autoLoading === true) { console.log('加载中') }
   return config
@@ -67,7 +68,8 @@ http.instance.interceptors.response.use(
 
 const table: Record<string, undefined | (() => void)> = {
   401: () => {
-    // router.navigate('/login')
+    window.alert('登录状态过期，请重新登录')
+    removeJwt()
   },
   402: () => {
     window.alert('请付费后观看')
@@ -82,24 +84,3 @@ const table: Record<string, undefined | (() => void)> = {
     window.alert('服务器错误')
   }
 }
-
-
-// demo
-
-// api/v1/tags?kind=income
-// const response = await http.get<{ resources: Tag[] }>('/tags',
-//   { kind: 'income' },
-//   {
-//     _mock: 'tagIndex',
-//     _autoLoading: true
-//   }
-// )
-
-// api/v1/tags?kind=expenses
-// const response = await http.get<{ resources: Tag[] }>('/tags',
-//   { kind: 'expenses' },
-//   {
-//     _mock: 'tagIndex',
-//     _autoLoading: true
-//   }
-// )

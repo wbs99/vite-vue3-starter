@@ -21,5 +21,5 @@
 pnpm i
 rm -rf .git
 git remote remove origin
-npm config set save-prefix=''  // 锁死 npm 版本号
+pnpm config set save-prefix=''  // 锁死 npm 版本号
 ```

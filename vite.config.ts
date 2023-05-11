@@ -14,7 +14,6 @@ export default defineConfig(({ command }) => {
       viteMockServe(
         {
           mockPath: 'src/mock',
-          enable: true,
         }
       )
     ],
