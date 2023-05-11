@@ -4,6 +4,7 @@ import { router } from "./router";
 import { createPinia } from 'pinia'
 import Icon from "./components/Icon.vue";
 import '@svgstore';
+import 'virtual:uno.css'
 
 const pinia = createPinia()
 const app = createApp(App)

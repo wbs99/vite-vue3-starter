@@ -3,6 +3,8 @@ import { defineConfig } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
 // @ts-nocheck
 import { svgstore } from './src/vite_plugins/svgstore';
+import Unocss from 'unocss/vite'
+
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
@@ -15,7 +17,8 @@ export default defineConfig(({ command }) => {
         {
           mockPath: 'src/mock',
         }
-      )
+      ),
+      Unocss(),
     ],
     // server: {
     //   proxy: {
