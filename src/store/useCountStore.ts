@@ -1,8 +1,8 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 export const useCountStore = defineStore(
-  "countStore",
+  'countStore',
   () => {
     const count = ref(0)
     const addCount = () => { count.value += 1 }

@@ -4,15 +4,13 @@
   </svg>
 </template>
 
-
-<script lang="ts" setup >
+<script lang="ts" setup>
 const props = defineProps({
   name: {
     type: String,
     required: true,
   },
-});
-
+})
 </script>
 
 <style lang="scss" scoped>

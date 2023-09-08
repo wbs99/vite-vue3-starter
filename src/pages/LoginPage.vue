@@ -1,8 +1,10 @@
 <template>
   <div>
-    sign in page
-    <button @click="onLogin"> sign in</button>
+    登录页面
   </div>
+  <button @click="onLogin">
+    登录
+  </button>
 </template>
 
 <script lang="ts" setup>
@@ -25,6 +27,5 @@ const onLoginError = (error: any) => {
   throw error
 }
 </script>
-
 
 <style lang="scss" scoped></style>

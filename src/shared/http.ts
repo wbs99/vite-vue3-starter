@@ -1,5 +1,6 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { getJwt, removeJwt } from "./storage";
+import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
+import axios from 'axios'
+import { getJwt, removeJwt } from './storage'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
 type PostConfig = Omit<AxiosRequestConfig, 'url' | 'data' | 'method'>
@@ -26,7 +27,6 @@ export class Http {
 }
 
 export const http = new Http('/api/v1')
-
 
 // set header
 http.instance.interceptors.request.use(config => {
