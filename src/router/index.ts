@@ -2,6 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { fetchMe, mePromise } from '../shared/me'
+import { useMeStore } from '../store/meStore'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/home' },
@@ -25,7 +26,7 @@ const whiteList: Record<string, 'exact' | 'startsWith'> = {
 }
 
 const { isLoading } = useNProgress()
-router.beforeEach((to) => {
+router.beforeEach(async (to) => {
   isLoading.value = true
   for (const key in whiteList) {
     const value = whiteList[key]
@@ -36,8 +37,14 @@ router.beforeEach((to) => {
       return true
     }
   }
+
   return mePromise!.then(
-    () => true,
+    async () => {
+      const meStore = useMeStore()
+      const response = await fetchMe()
+      meStore.setMe(response.data.resource)
+      return true
+    },
     () => `/login?return_to=${to.path}`
   )
 })

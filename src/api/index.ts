@@ -5,4 +5,4 @@ export const getJwtApi = () => http.post<{ jwt: string }>('/session',
   { _mock: 'session' }
 )
 
-export const fetchMeApi = () => http.get<Resource<{ id: number }>>('/me', {}, { _mock: 'me' })
+export const fetchMeApi = () => http.get<Resource<User>>('/me', {}, { _mock: 'me' })
