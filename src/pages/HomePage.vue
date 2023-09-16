@@ -2,7 +2,7 @@
   <div>
     home page
   </div>
-  <button @click="logout">
+  <button class="p-btn" @click="logout">
     退出登录
   </button>
   <div>

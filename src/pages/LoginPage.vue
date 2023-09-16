@@ -2,15 +2,14 @@
   <div>
     登录页面
   </div>
-  <button @click="onLogin">
-    登录
-  </button>
+  <MyButton @click="onLogin" />
 </template>
 
 <script lang="ts" setup>
 import { useRoute, useRouter } from 'vue-router'
 import { getJwtApi } from '../api'
 import { setJwt } from '../shared/storage'
+import MyButton from '../components/MyButton.vue'
 
 const route = useRoute()
 const router = useRouter()

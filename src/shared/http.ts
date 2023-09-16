@@ -1,5 +1,6 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
+import { useButtonLoadingStore } from '../store/useButtonLoadingStore'
 import { getJwt, removeJwt } from './storage'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
@@ -30,23 +31,36 @@ export const http = new Http('/api/v1')
 
 // set header and start loading
 http.instance.interceptors.request.use(config => {
+  const buttonLoadingStore = useButtonLoadingStore()
+
   const jwt = getJwt()
   if (jwt) { config.headers!.Authorization = `Bearer ${jwt}` }
   if (config._autoLoading === true) { console.log('加载中') }
+  if (config._buttonLoading === true) {
+    buttonLoadingStore.startButtonLoading()
+  }
   return config
 })
 
 // cancel loading
 http.instance.interceptors.response.use(
   response => {
+    const buttonLoadingStore = useButtonLoadingStore()
     if (response.config._autoLoading === true) {
       console.log('加载完成')
+    }
+    if (response.config._buttonLoading === true) {
+      buttonLoadingStore.closeButtonLoading()
     }
     return response
   },
   (error: AxiosError) => {
+    const buttonLoadingStore = useButtonLoadingStore()
     if (error.response?.config._autoLoading === true) {
       console.log('加载完成')
+    }
+    if (error.response?.config._buttonLoading === true) {
+      buttonLoadingStore.closeButtonLoading()
     }
     throw error
   })
