@@ -2,18 +2,17 @@
   <div>
     home page
   </div>
-  <button class="p-btn" @click="logout">
-    退出登录
-  </button>
   <div>
     {{ meStore.me.id }}
   </div>
+  <MyButton button-name="退出登录" @click="logout" />
 </template>
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
 import { removeJwt } from '../utils/storage'
 import { useMeStore } from '../stores/meStore'
+import MyButton from '../components/MyButton.vue'
 
 const router = useRouter()
 const meStore = useMeStore()
