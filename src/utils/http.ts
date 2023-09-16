@@ -1,6 +1,6 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { useButtonLoadingStore } from '../store/useButtonLoadingStore'
+import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 import { getJwt, removeJwt } from './storage'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>

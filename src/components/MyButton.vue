@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useButtonLoadingStore } from '../store/useButtonLoadingStore'
+import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 
 const buttonLoadingStore = useButtonLoadingStore()
 </script>

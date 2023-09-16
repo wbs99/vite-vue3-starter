@@ -8,7 +8,7 @@
 <script lang="ts" setup>
 import { useRoute, useRouter } from 'vue-router'
 import { getJwtApi } from '../api'
-import { setJwt } from '../shared/storage'
+import { setJwt } from '../utils/storage'
 import MyButton from '../components/MyButton.vue'
 
 const route = useRoute()

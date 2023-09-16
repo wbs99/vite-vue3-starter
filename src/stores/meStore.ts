@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
-import { http } from '../shared/http'
+import { http } from '../utils/http'
 
 export const useMeStore = defineStore(
   'meStore',

@@ -12,8 +12,8 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
-import { removeJwt } from '../shared/storage'
-import { useMeStore } from '../store/meStore'
+import { removeJwt } from '../utils/storage'
+import { useMeStore } from '../stores/meStore'
 
 const router = useRouter()
 const meStore = useMeStore()
