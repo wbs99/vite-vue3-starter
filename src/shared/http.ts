@@ -28,7 +28,7 @@ export class Http {
 
 export const http = new Http('/api/v1')
 
-// set header
+// set header and start loading
 http.instance.interceptors.request.use(config => {
   const jwt = getJwt()
   if (jwt) { config.headers!.Authorization = `Bearer ${jwt}` }
@@ -36,7 +36,7 @@ http.instance.interceptors.request.use(config => {
   return config
 })
 
-// loading
+// cancel loading
 http.instance.interceptors.response.use(
   response => {
     if (response.config._autoLoading === true) {

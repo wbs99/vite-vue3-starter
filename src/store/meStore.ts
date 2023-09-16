@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
+import { http } from '../shared/http'
 
 export const useMeStore = defineStore(
   'meStore',
@@ -16,6 +17,8 @@ export const useMeStore = defineStore(
       Object.assign(me, data)
     }
 
-    return { me, setMe }
+    const getMePromise = () => http.get<Resource<User>>('/me')
+
+    return { me, setMe, getMePromise }
   }
 )

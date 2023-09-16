@@ -13,5 +13,5 @@ export const MockMe: MockMethod[] = [{
         created_at: '2021-08-01T00:00:00.000Z',
       }
     }
-  },
+  }
 }]
