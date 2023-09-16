@@ -1,5 +1,5 @@
 <template>
-  <svg class="icon">
+  <svg class="w-1.2em h-1.2em fill-current overflow-hidden">
     <use :xlink:href="`#${props.name}`" />
   </svg>
 </template>
@@ -9,16 +9,8 @@ const props = defineProps({
   name: {
     type: String,
     required: true,
-  },
+  }
 })
 </script>
 
-<style lang="scss" scoped>
-.icon {
-  width: 32px;
-  height: 32px;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
-</style>
+<style lang="scss" scoped></style>

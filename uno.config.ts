@@ -4,7 +4,9 @@ import {
 
 export default defineConfig({
   theme: {},
-  shortcuts: {},
+  shortcuts: {
+    'p-btn': 'h-48px w-100% bg-#5C33BE b-none text-white text-18px rounded-8px px-12px flex justify-center items-center',
+  },
   safelist: [],
   presets: [
     presetUno(),
