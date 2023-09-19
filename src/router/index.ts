@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useMeStore } from '../stores/meStore'
 import { fetchMeApi } from '../api'
@@ -14,7 +14,7 @@ const routes: RouteRecordRaw[] = [
   },
   { path: '/:pathMatch(.*)', component: () => import('../pages/NotFoundPage.vue') },
 ]
-const history = createWebHashHistory()
+const history = createWebHistory()
 
 export const router = createRouter({ history, routes })
 
