@@ -2,6 +2,7 @@
 import { AxiosRequestConfig } from 'axios'
 declare module 'axios' {
   export interface AxiosRequestConfig {
-    _buttonLoading?: boolean
+    _buttonLoading?: Ref<boolean>
+    _autoLoading?: Boolean
   }
 }

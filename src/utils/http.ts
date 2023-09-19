@@ -1,6 +1,5 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 import { getJwt, removeJwt } from './storage'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
@@ -33,9 +32,8 @@ export const http = new Http('/api/v1')
 http.instance.interceptors.request.use(config => {
   const jwt = getJwt()
   if (jwt) { config.headers!.Authorization = `Bearer ${jwt}` }
-  const buttonLoadingStore = useButtonLoadingStore()
-  if (config._buttonLoading === true) {
-    buttonLoadingStore.startButtonLoading()
+  if (config._buttonLoading !== undefined) {
+    config._buttonLoading.value = true
   }
   return config
 })
@@ -43,16 +41,16 @@ http.instance.interceptors.request.use(config => {
 // cancel loading
 http.instance.interceptors.response.use(
   response => {
-    const buttonLoadingStore = useButtonLoadingStore()
-    if (response.config._buttonLoading === true) {
-      buttonLoadingStore.closeButtonLoading()
+    if (response.config._buttonLoading !== undefined) {
+      response.config._buttonLoading.value = false
     }
     return response
   },
   (error: AxiosError) => {
-    const buttonLoadingStore = useButtonLoadingStore()
-    if (error.response?.config._buttonLoading === true) {
-      buttonLoadingStore.closeButtonLoading()
+    if (error.response?.config._buttonLoading !== undefined) {
+      const configClone = { ...error.response.config }
+      configClone._buttonLoading.value = false
+      error.response.config = configClone
     }
     throw error
   })
@@ -82,6 +80,9 @@ const table: Record<string, undefined | (() => void)> = {
   },
   403: () => {
     window.alert('没有权限')
+  },
+  408: () => {
+    window.alert('请求超时')
   },
   429: () => {
     window.alert('请求过于频繁')

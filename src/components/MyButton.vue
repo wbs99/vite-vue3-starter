@@ -1,21 +1,21 @@
 <template>
-  <button :disabled="buttonLoadingStore.buttonLoading" class="p-btn">
-    <Icon v-show="buttonLoadingStore.buttonLoading" class="animate-spin animate-1s mr-12px" name="loading" />
+  <button :disabled="buttonLoading" class="p-btn">
+    <Icon v-show="buttonLoading" class="animate-spin animate-1s mr-12px" name="loading" />
     {{ buttonName }}
   </button>
 </template>
 
 <script lang="ts" setup>
-import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
-
 defineProps({
   buttonName: {
     type: String,
     default: '登录'
+  },
+  buttonLoading: {
+    type: Boolean,
+    default: false
   }
 })
-
-const buttonLoadingStore = useButtonLoadingStore()
 </script>
 
 <style lang="scss" scoped></style>
