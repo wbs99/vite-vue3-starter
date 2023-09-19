@@ -1,8 +1,7 @@
 <template>
-  <div>
-    登录页面
+  <div class="flex justify-center items-center h-screen mx-24px">
+    <MyButton class="mb-24px" @click="onLogin" />
   </div>
-  <MyButton @click="onLogin" />
 </template>
 
 <script lang="ts" setup>
