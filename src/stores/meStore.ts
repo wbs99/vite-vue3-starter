@@ -12,10 +12,7 @@ export const useMeStore = defineStore(
       updated_at: ''
     })
 
-    const setMe = (data: User) => {
-      me.id = data.id
-      Object.assign(me, data)
-    }
+    const setMe = (data: User) => Object.assign(me, data)
 
     const getMePromise = () => http.get<Resource<User>>('/me')
 
