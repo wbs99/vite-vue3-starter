@@ -26,8 +26,8 @@ type Item = {
   happen_at: string
   created_at: string
   updated_at: string
-  kind: 'expenses' | 'income'
   deleted_at?: string
+  kind: 'expenses' | 'income'
 }
 type Tag = {
   id: number
