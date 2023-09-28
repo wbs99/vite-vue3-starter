@@ -15,6 +15,23 @@ export default defineConfig(({ command }) => {
       }),
       Unocss(),
     ],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id: any) {
+            if (id.includes('echarts')) {
+              return 'echarts'
+            }
+            if (id.includes('mock') || id.includes('faker')) {
+              return 'mock'
+            }
+            if (id.includes('node_modules')) {
+              return 'vendor'
+            }
+          }
+        }
+      }
+    },
     // server: {
     //   proxy: {
     //     '/api/v1': {
