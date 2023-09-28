@@ -1,12 +1,14 @@
 {
   "name": "vue3-start",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite --host",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@faker-js/faker": "7.6.0",
@@ -23,9 +25,10 @@
     "vue-router": "4.1.6"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "0.41.0",
+    "@antfu/eslint-config": "1.0.0-beta.13",
     "@types/nprogress": "0.2.0",
     "@vitejs/plugin-vue": "4.1.0",
+    "eslint": "8.50.0",
     "typescript": "5.0.4",
     "vite": "4.2.2",
     "vite-plugin-mock": "2.9.6",

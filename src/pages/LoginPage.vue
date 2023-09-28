@@ -15,6 +15,7 @@ const route = useRoute()
 const router = useRouter()
 
 const loginLoading = ref(false)
+
 const onLogin = async () => {
   const response = await getJwtApi(loginLoading).catch(onLoginError)
   setJwt(response.data.jwt)

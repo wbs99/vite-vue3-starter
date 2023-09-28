@@ -5,8 +5,12 @@ export const useButtonLoadingStore = defineStore(
   'buttonLoadingStore',
   () => {
     const buttonLoading = ref(false)
-    const startButtonLoading = () => { buttonLoading.value = true }
-    const closeButtonLoading = () => { buttonLoading.value = false }
+    const startButtonLoading = () => {
+      buttonLoading.value = true
+    }
+    const closeButtonLoading = () => {
+      buttonLoading.value = false
+    }
 
     return {
       buttonLoading,

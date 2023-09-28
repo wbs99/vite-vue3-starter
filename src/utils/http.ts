@@ -12,15 +12,19 @@ export class Http {
   constructor(baseURL: string) {
     this.instance = axios.create({ baseURL })
   }
+
   get<R = unknown>(url: string, query?: Record<string, JSONValue>, config?: GetConfig) {
     return this.instance.request<R>({ ...config, url, params: query, method: 'get' })
   }
+
   post<R = unknown>(url: string, data?: Record<string, JSONValue>, config?: PostConfig) {
     return this.instance.request<R>({ ...config, url, data, method: 'post' })
   }
+
   patch<R = unknown>(url: string, data?: Record<string, JSONValue>, config?: PatchConfig) {
     return this.instance.request<R>({ ...config, url, data, method: 'patch' })
   }
+
   delete<R = unknown>(url: string, query?: Record<string, string>, config?: DeleteConfig) {
     return this.instance.request<R>({ ...config, url, params: query, method: 'delete' })
   }
@@ -29,9 +33,11 @@ export class Http {
 export const http = new Http('/api/v1')
 
 // set header and start loading
-http.instance.interceptors.request.use(config => {
+http.instance.interceptors.request.use((config) => {
   const jwt = getJwt()
-  if (jwt) { config.headers!.Authorization = `Bearer ${jwt}` }
+  if (jwt) {
+    config.headers!.Authorization = `Bearer ${jwt}`
+  }
   if (config._buttonLoading !== undefined) {
     config._buttonLoading.value = true
   }
@@ -40,7 +46,7 @@ http.instance.interceptors.request.use(config => {
 
 // cancel loading
 http.instance.interceptors.response.use(
-  response => {
+  (response) => {
     if (response.config._buttonLoading !== undefined) {
       response.config._buttonLoading.value = false
     }
@@ -57,7 +63,7 @@ http.instance.interceptors.response.use(
 
 // errors
 http.instance.interceptors.response.use(
-  response => {
+  (response) => {
     return response
   },
   (error: AxiosError) => {

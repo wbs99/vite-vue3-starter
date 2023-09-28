@@ -5,7 +5,7 @@ import Unocss from 'unocss/vite'
 import { svgstore } from './src/vite_plugins/svgstore'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(() => {
   return {
     plugins: [
       vue(),
