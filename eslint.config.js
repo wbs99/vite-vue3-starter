@@ -20,6 +20,8 @@ export default antfu(
       'antfu/consistent-list-newline': 'off',
       'antfu/top-level-function': 'off',
       'no-alert': 'off',
+      'no-console': 'off',
+      'max-statements-per-line': 'off',
       'unicorn/prefer-number-properties': 'off',
       'ts/indent': 'off',
       'ts/no-use-before-define': 'off',
