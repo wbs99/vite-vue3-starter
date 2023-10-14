@@ -1,4 +1,3 @@
-import type { Ref } from 'vue'
 import { http } from '../utils/http'
 
 export const getJwtApi = (buttonLoading: Ref<boolean>) => http.post<{ jwt: string }>(

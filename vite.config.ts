@@ -1,7 +1,8 @@
 import vue from '@vitejs/plugin-vue'
+import Unocss from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
-import Unocss from 'unocss/vite'
 import { svgstore } from './src/vite_plugins/svgstore'
 
 // https://vitejs.dev/config/
@@ -14,6 +15,18 @@ export default defineConfig(() => {
         mockPath: 'src/mock',
       }),
       Unocss(),
+      AutoImport({
+        imports: [
+          'vue',
+          'vue-router',
+          'pinia'
+        ],
+        dirs: [
+          './composables/**',
+        ],
+        dts: "src/types/auto-import.d.ts",
+        vueTemplate: true,
+      })
     ],
     build: {
       rollupOptions: {
@@ -32,12 +45,12 @@ export default defineConfig(() => {
         }
       }
     },
-    // server: {
-    //   proxy: {
-    //     '/api/v1': {
-    //       target: 'http://121.196.236.94:3000/',
-    //     }
-    //   }
-    // }
+    server: {
+      proxy: {
+        '/api/v1': {
+          target: 'http://121.196.236.94:3000/',
+        }
+      }
+    }
   }
 })

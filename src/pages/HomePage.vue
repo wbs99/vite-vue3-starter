@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
 import MyButton from '../components/MyButton.vue'
 import { useMeStore } from '../stores/meStore'
 import { removeJwt } from '../utils/storage'

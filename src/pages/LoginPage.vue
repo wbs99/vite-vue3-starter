@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 import { getJwtApi } from '../api'
 import MyButton from '../components/MyButton.vue'
 import { setJwt } from '../utils/storage'
@@ -15,7 +13,6 @@ const route = useRoute()
 const router = useRouter()
 
 const loginLoading = ref(false)
-
 const onLogin = async () => {
   const response = await getJwtApi(loginLoading).catch(onLoginError)
   setJwt(response.data.jwt)

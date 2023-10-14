@@ -39,3 +39,5 @@ type Tag = {
   updated_at: string
   deleted_at?: string
 }
+
+type JSONValue = null | boolean | string | number | JSONValue[] | Record<string, JSONValue>
