@@ -24,10 +24,19 @@ export default defineConfig(() => {
         dirs: [
           './composables/**',
         ],
-        dts: "src/types/auto-import.d.ts",
+        dts: 'src/types/auto-import.d.ts',
         vueTemplate: true,
       })
     ],
+    server: {
+      host: true,
+      proxy: {
+        '/api/v1': {
+          target: 'http://121.196.236.94:3000/',
+          changeOrigin: true,
+        }
+      }
+    },
     build: {
       rollupOptions: {
         output: {
@@ -45,12 +54,5 @@ export default defineConfig(() => {
         }
       }
     },
-    server: {
-      proxy: {
-        '/api/v1': {
-          target: 'http://121.196.236.94:3000/',
-        }
-      }
-    }
   }
 })
