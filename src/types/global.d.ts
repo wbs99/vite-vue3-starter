@@ -41,3 +41,19 @@ type Tag = {
 }
 
 type JSONValue = null | boolean | string | number | JSONValue[] | Record<string, JSONValue>
+
+type Pager = {
+  page: number
+  perPage: number
+}
+type Course = {
+  id: number
+  name: string
+}
+
+type ListResponse<T> = {
+  code: number
+  msg: string
+  total: number
+  data: T[]
+}

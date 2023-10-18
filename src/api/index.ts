@@ -7,3 +7,5 @@ export const getJwtApi = (buttonLoading: Ref<boolean>) => http.post<{ jwt: strin
 )
 
 export const fetchMeApi = () => http.get<Resource<User>>('/me')
+
+export const fetchCourseListApi = (data: Pager) => http.get<ListResponse<Course>>('/courses', data)
