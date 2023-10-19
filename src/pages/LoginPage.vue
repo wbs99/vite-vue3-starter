@@ -6,7 +6,6 @@
 
 <script lang="ts" setup>
 import { getJwtApi } from '../api'
-import MyButton from '../components/MyButton.vue'
 import { setJwt } from '../utils/storage'
 
 const route = useRoute()

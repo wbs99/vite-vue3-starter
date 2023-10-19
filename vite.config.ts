@@ -1,6 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
 import { svgstore } from './src/vite_plugins/svgstore'
@@ -26,10 +27,16 @@ export default defineConfig(() => {
         ],
         dts: 'src/types/auto-import.d.ts',
         vueTemplate: true,
-      })
+      }),
+      Components({
+        dirs: ['src/components'],
+        include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/],
+        dts: '/src/types/components.d.ts',
+      }),
+
     ],
     server: {
-      open:true,
+      open: true,
       host: true,
       // proxy: {
       //   '/api/v1': {

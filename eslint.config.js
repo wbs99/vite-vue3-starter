@@ -10,7 +10,7 @@ export default antfu(
       'vue/block-order': ['error', {
         order: [['script', 'template'], 'style'],
       }],
-    },
+    }
   },
   {
     rules: {
@@ -31,5 +31,5 @@ export default antfu(
       'ts/comma-dangle': 'off',
       'ts/no-unused-vars': 'off',
     },
-  },
+  }
 )

@@ -6,9 +6,8 @@
 </template>
 
 <script lang="ts" setup>
-import { fetchCourseListApi } from '../api/index'
-import ListLoading from '../components/ListLoading.vue'
-import { useList } from '../hooks/useList'
+import { fetchCourseListApi } from '../api/index';
+import { useList } from '../hooks/useList';
 
 const listParams = reactive({
   page: 1,
