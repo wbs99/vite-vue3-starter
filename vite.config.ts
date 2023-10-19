@@ -29,6 +29,7 @@ export default defineConfig(() => {
       })
     ],
     server: {
+      open:true,
       host: true,
       // proxy: {
       //   '/api/v1': {
