@@ -2,15 +2,11 @@
 import antfu from '@antfu/eslint-config'
 
 export default antfu(
-  { vue: true, typescript: true },
   {
-    files: ['**/*.vue'],
-    rules: {
-      'vue/operator-linebreak': ['error', 'before'],
-      'vue/block-order': ['error', {
-        order: [['script', 'template'], 'style'],
-      }],
-    }
+    ignores: [
+      'public',
+      'dist*',
+    ],
   },
   {
     rules: {
@@ -31,5 +27,14 @@ export default antfu(
       'ts/comma-dangle': 'off',
       'ts/no-unused-vars': 'off',
     },
-  }
+  },
+  {
+    files: ['**/*.vue'],
+    rules: {
+      'vue/operator-linebreak': ['error', 'before'],
+      'vue/block-order': ['error', {
+        order: [['script', 'template'], 'style'],
+      }],
+    }
+  },
 )
