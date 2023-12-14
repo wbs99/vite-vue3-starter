@@ -1,10 +1,11 @@
-import path from 'node:path'
 import fs from 'node:fs'
-
+import path from 'node:path'
 import store from 'svgstore'
 
 // 用于制作 SVG Sprites
-import { optimize } from 'svgo' // 用于优化 SVG 文件
+import { optimize } from 'svgo'
+
+// 用于优化 SVG 文件
 
 export const svgstore = (options = {}) => {
   const inputFolder = options.inputFolder || 'src/assets/icons'
