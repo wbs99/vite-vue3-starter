@@ -1,22 +1,16 @@
+// 更多设置参考 https://github.com/antfu/eslint-config
+
 import antfu from '@antfu/eslint-config'
 
 export default await antfu(
   {
+    unocss: true,
     ignores: [
       'public',
       'dist*',
       '**/*.md',
+      '**/*.d.ts',
     ],
-  },
-  {
-    files: ['**/*.vue'],
-    rules: {
-      'style/semi': ['error', 'never'],
-      'vue/operator-linebreak': ['error', 'before'],
-      'vue/block-order': ['error', {
-        order: [['script', 'template'], 'style'],
-      }],
-    },
   },
   {
     rules: {
@@ -37,6 +31,16 @@ export default await antfu(
       'ts/consistent-type-definitions': 'off',
       'ts/comma-dangle': 'off',
       'ts/no-unused-vars': 'off',
+    },
+  },
+  {
+    files: ['**/*.vue'],
+    rules: {
+      'style/semi': ['error', 'never'],
+      'vue/operator-linebreak': ['error', 'before'],
+      'vue/block-order': ['error', {
+        order: [['script', 'template'], 'style'],
+      }],
     },
   },
 )

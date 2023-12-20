@@ -1,6 +1,6 @@
 # 用于快速创建项目基础配置
 
-# Vue 3 + TypeScript + Vite  start 
+# Vue 3 + TypeScript + Vite  start
 - 已引入 vue-router@4
 - 已引入 pinia
 - 已引入 sass
@@ -15,7 +15,7 @@
   <Icon name='xxx' />
   ```
  - 已封装基础 axios ，并引入 faker.js
-  
+
 # install
 ```
 pnpm i

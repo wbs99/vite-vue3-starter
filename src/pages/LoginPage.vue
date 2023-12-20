@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col justify-center items-center h-screen mx-24px">
-    <MyButton class="mb-24px" :button-loading="loginLoading" @click="onLogin" />
+  <div mx-24px h-screen flex flex-col items-center justify-center>
+    <MyButton mb-24px :button-loading="loginLoading" @click="onLogin" />
   </div>
 </template>
 

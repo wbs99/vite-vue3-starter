@@ -1,6 +1,6 @@
 <template>
   <button :disabled="buttonLoading" class="p-btn">
-    <Icon v-show="buttonLoading" class="animate-spin animate-1s mr-12px" name="loading" />
+    <Icon v-show="buttonLoading" class="animate-1s mr-12px animate-spin" name="loading" />
     {{ buttonName }}
   </button>
 </template>
