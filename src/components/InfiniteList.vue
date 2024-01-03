@@ -1,5 +1,5 @@
 <template>
-  <div v-for="item in list" :key="item.id" class="mt-24px">
+  <div v-for="item in list" :key="item.id" class="mt-6">
     {{ item.name }}
   </div>
   <ListLoading :has-more="hasMore" :is-loading="isLoading" @infinite="fetchList" />

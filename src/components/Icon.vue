@@ -1,5 +1,5 @@
 <template>
-  <svg class="h-1.2em w-1.2em overflow-hidden fill-current">
+  <svg class="h-5 w-5 overflow-hidden fill-current">
     <use :xlink:href="`#${props.name}`" />
   </svg>
 </template>

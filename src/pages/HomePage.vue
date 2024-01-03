@@ -10,8 +10,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useMeStore } from '../stores/meStore'
-import { removeJwt } from '../utils/storage'
+import { useMeStore } from '../stores/meStore';
+import { removeJwt } from '../utils/storage';
 
 const router = useRouter()
 const meStore = useMeStore()

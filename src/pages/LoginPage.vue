@@ -1,12 +1,12 @@
 <template>
-  <div mx-24px h-screen flex flex-col items-center justify-center>
-    <MyButton mb-24px :button-loading="loginLoading" @click="onLogin" />
+  <div class="mx-6 h-screen flex flex-col items-center justify-center">
+    <MyButton class="mb-6" :button-loading="loginLoading" @click="onLogin" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { getJwtApi } from '../api'
-import { setJwt } from '../utils/storage'
+import { getJwtApi } from '../api';
+import { setJwt } from '../utils/storage';
 
 const route = useRoute()
 const router = useRouter()

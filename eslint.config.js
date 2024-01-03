@@ -4,7 +4,6 @@ import antfu from '@antfu/eslint-config'
 
 export default await antfu(
   {
-    unocss: true,
     ignores: [
       'public',
       'dist*',
