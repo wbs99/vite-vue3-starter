@@ -31,10 +31,9 @@ export default defineConfig(() => {
         include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/],
         dts: '/src/types/components.d.ts',
       }),
-
     ],
     server: {
-      open: true,
+      open: false, // 自动打开浏览器
       host: true,
       // proxy: {
       //   '/api/v1': {
@@ -59,6 +58,14 @@ export default defineConfig(() => {
           }
         }
       }
+    },
+    esbuild: {
+      // 打包时移除 console.log
+      pure: ['console.log'],
+      // 打包时移除 debugger
+      drop: ['debugger'],
+      // 打包时移除所有注释
+      legalComments: 'none'
     },
   }
 })
