@@ -2,6 +2,7 @@
   <div>
     home page
   </div>
+  <Icon icon="line-md:arrow-left" class="w-[1.2em] h-[1.2em]" />
   <div>
     {{ meStore.me.id }}
   </div>
@@ -10,6 +11,7 @@
 </template>
 
 <script lang="ts" setup>
+import { Icon } from '@iconify/vue'
 import { useMeStore } from '../stores/meStore'
 import { removeJwt } from '../utils/storage'
 
