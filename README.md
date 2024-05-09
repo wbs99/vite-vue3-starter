@@ -27,8 +27,8 @@ pnpm config set save-prefix=''  // 锁死 npm 版本号
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
 </script>
-```
-使用方式二：
+
+使用方式二:
 在 src/assets/icons 中添加自己喜欢的 svg ，填入到 name 属性中，重新运行 `pnpm dev`
 
 ```vue

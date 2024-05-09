@@ -1,7 +1,8 @@
-interface Resource<T> {
+type Resource<T> = {
   resource: T
 }
-interface Resources<T> {
+
+type Resources<T> = {
   resources: T[]
   pager: {
     page: number
@@ -9,14 +10,16 @@ interface Resources<T> {
     count: number
   }
 }
-interface User {
+
+type User = {
   id: number
   email: string
   name?: string
   created_at: string
   updated_at: string
 }
-interface Item {
+
+type Item = {
   id: number
   user_id: number
   amount: number
@@ -29,7 +32,8 @@ interface Item {
   deleted_at?: string
   kind: 'expenses' | 'income'
 }
-interface Tag {
+
+type Tag = {
   id: number
   kind: Item['kind']
   user_id: number
@@ -42,16 +46,17 @@ interface Tag {
 
 type JSONValue = null | boolean | string | number | JSONValue[] | Record<string, JSONValue>
 
-interface Pager {
+type Pager = {
   page: number
   perPage: number
 }
-interface Course {
+
+type Course = {
   id: number
   name: string
 }
 
-interface ListResponse<T> {
+type ListResponse<T> ={
   code: number
   msg: string
   total: number
