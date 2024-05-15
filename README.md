@@ -17,7 +17,7 @@ pnpm config set save-prefix=''  // 锁死 npm 版本号
 
 # Icon
 使用方式一：
-在 https://icones.js.org/ 找到喜欢的 icon ，复制 icon 名称 ，填入到 icon 属性中
+在 https://yesicon.app/ 找到喜欢的 icon ，复制 icon 名称 ，填入到 icon 属性中
 
 ```vue
 <template>
