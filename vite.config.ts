@@ -23,7 +23,7 @@ export default defineConfig(() => {
         dirs: [
           './composables/**',
         ],
-        dts: 'src/types/auto-import.d.ts',
+        dts: './src/types/auto-import.d.ts',
         vueTemplate: true,
       }),
       Components({

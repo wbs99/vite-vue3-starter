@@ -4,7 +4,7 @@ import { computed, onMounted, ref } from 'vue'
 
 export const useList = <T extends Pager, DataType>(
   listParams: T,
-  fetcher: (params: T) => Promise<AxiosResponse<ListResponse<DataType>>>
+  fetcher: (params: T) => Promise<AxiosResponse<Resources<DataType>>>
 ) => {
   const isLoading = ref(false)
   const listTotal = ref(0)
@@ -14,9 +14,9 @@ export const useList = <T extends Pager, DataType>(
   const fetchList = async () => {
     isLoading.value = true
     const response = await fetcher(listParams)
-    list.value.push(...response.data.data)
+    list.value.push(...response.data.resources)
     listTotal.value = response.data.total
-    listParams.page += 1
+    listParams.currentPage += 1
     isLoading.value = false
   }
 

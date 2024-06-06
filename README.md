@@ -8,7 +8,7 @@
 - 已设置部分 CSS Reset
 
 # install
-```
+```bash
 pnpm i
 rm -rf .git
 git remote remove origin

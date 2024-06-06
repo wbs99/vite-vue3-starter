@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-6 h-screen flex flex-col items-center justify-center">
+  <div class="flex flex-col items-center justify-center h-screen mx-6">
     <MyButton class="mb-6" :button-loading="loginLoading" @click="onLogin" />
   </div>
 </template>
@@ -12,6 +12,7 @@ const route = useRoute()
 const router = useRouter()
 
 const loginLoading = ref(false)
+
 const onLogin = async () => {
   const response = await getJwtApi(loginLoading).catch(onLoginError)
   setJwt(response.data.jwt)
