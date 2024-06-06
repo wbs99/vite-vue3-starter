@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getJwtApi } from '../api'
+import { getJwtApi } from '../api/meApi';
 import { setJwt } from '../utils/storage'
 
 const route = useRoute()

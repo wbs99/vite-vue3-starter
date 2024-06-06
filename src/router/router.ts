@@ -1,8 +1,8 @@
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
-import { fetchMeApi } from '../api'
 import { useMeStore } from '../stores/meStore'
+import { fetchMeApi } from '../api/meApi'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/home' },

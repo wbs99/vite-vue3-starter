@@ -3,8 +3,16 @@
     <span v-if="isMePending">获取我的信息</span>
     <span v-else-if="isMeError">获取我的信息失败: {{ meError }}</span>
     <span v-else class="font-bold tracking-tight text-transparent bg-gradient-to-r from-red-400 to-red-600 bg-clip-text dark:from-red-200 dark:to-red-400">
-      {{ meData?.email }}
+      这是邮箱 -- {{ meData?.email }}
     </span>
+
+    <div>
+      <span v-if="isTagPending">获取标签信息</span>
+      <span v-else-if="isTagError">获取标签信息失败: {{ tagError }}</span>
+      <span v-else class="font-bold tracking-tight text-transparent bg-gradient-to-r from-emerald-400 to-green-600 bg-clip-text dark:from-green-200 dark:to-green-400">
+        这是标签名称 -- {{ tagData?.tagName }}
+      </span>
+    </div>
 
     <ul v-for="(group, index) in courseList?.pages" :key="index">
       <li v-for="course in group.resources" :key="course.id">
@@ -28,10 +36,13 @@
 <script lang="ts" setup>
 import { fetchCourseQuery } from '../api/courseApi'
 import { fetchMeQuery } from '../api/meApi'
-import { router } from '../router'
+import { fetchTagQuery } from '../api/tagApi'
+import { router } from '../router/router'
 import { removeJwt } from '../utils/storage'
 
 const {meData, isMePending, isMeError, meError} = fetchMeQuery()
+
+const {tagData, isTagPending, isTagError, tagError} = fetchTagQuery(meData)
 
 const {courseList, fetchCourseNextPage, hasCourseNextPage, isFetchingCourseNextPage} = fetchCourseQuery({currentPage: 1, perPage: 20 })
 

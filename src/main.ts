@@ -7,7 +7,7 @@ import './assets/stylesheets/nprogress.scss'
 import './assets/stylesheets/reset.scss'
 import './assets/stylesheets/tailwind.scss'
 import './assets/stylesheets/vars.scss'
-import { router } from './router'
+import { router } from './router/router'
 
 const pinia = createPinia()
 const app = createApp(App)

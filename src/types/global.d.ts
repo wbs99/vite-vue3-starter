@@ -28,3 +28,8 @@ type Course = {
   id: number
   name: string
 }
+
+type Tag = {
+  id:number
+  tagName:string
+}
