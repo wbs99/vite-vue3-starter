@@ -1,12 +1,12 @@
 <template>
-  <div v-for="item in list" :key="item.id" class="mt-6">
-    {{ item.name }}
+  <div v-for="course in list" :key="course.id" class="mt-6">
+    {{ course.name }}
   </div>
   <ListLoading :has-more="hasMore" :is-loading="isLoading" @infinite="fetchList" />
 </template>
 
 <script lang="ts" setup>
-import { fetchCourseListApi } from '../api'
+import { fetchCourseListApi } from '../api/courseApi'
 import { useList } from '../hooks/useList'
 
 const listParams = reactive({

@@ -5,7 +5,7 @@ export const fetchCourseListApi = (data: Pager) => http.get<Resources<Course>>('
 
 export const fetchCourseQuery = (params: Pager) => {
   const { currentPage, perPage } = params
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError, isLoading } = useInfiniteQuery({
     queryKey: ['coursesApi'],
     queryFn: async ({ pageParam = currentPage }) => {
       const response = await fetchCourseListApi({ ...params, currentPage: pageParam })
@@ -13,12 +13,9 @@ export const fetchCourseQuery = (params: Pager) => {
     },
     initialPageParam: currentPage,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
-      if (lastPage.resources.length < perPage) {
-        return undefined
-      }
-      return lastPageParam + 1
+      return lastPage.resources.length >= perPage ? lastPageParam + 1 : undefined
     },
   })
 
-  return { courseList: data, fetchCourseNextPage: fetchNextPage, hasCourseNextPage: hasNextPage, isFetchingCourseNextPage: isFetchingNextPage }
+  return { courseList: data, isCourseLoading: isLoading, fetchCourseNextPage: fetchNextPage, hasCourseNextPage: hasNextPage, isFetchingCourseNextPage: isFetchingNextPage, isCourseError: isError, }
 }

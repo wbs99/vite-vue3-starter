@@ -10,14 +10,14 @@ export const getJwtApi = (buttonLoading: Ref<boolean>) => http.post<{ jwt: strin
 export const fetchMeApi = () => http.get<Resource<User>>('/me')
 
 export const fetchMeQuery = () => {
-  const { isPending, isFetching, isError, data, error } = useQuery({
+  const { isLoading, isError, data, error } = useQuery({
     queryKey: ['meApi'],
     queryFn: async () => {
-      const response = await http.get<Resource<User>>('/me')
+      const response = await fetchMeApi()
       return response.data.resource
     },
   })
   return {
-    meData: data, meError: error, isMeError: isError, isMePending: isPending, isMeFetching: isFetching
+    meData: data, isMeLoading: isLoading, isMeError: isError, meError: error,
   }
 }
