@@ -11,21 +11,31 @@
   },
   "dependencies": {
     "@faker-js/faker": "8.4.1",
+<<<<<<< HEAD
     "@tanstack/vue-query": "5.41.0",
     "@vueuse/core": "10.10.0",
     "@vueuse/integrations": "10.10.0",
+=======
+    "@tanstack/vue-query": "5.45.0",
+    "@vueuse/core": "10.11.0",
+    "@vueuse/integrations": "10.11.0",
+>>>>>>> 05f1279 (添加触底加载示例)
     "axios": "1.7.2",
     "dayjs": "1.11.11",
     "nprogress": "0.2.0",
     "pinia": "2.1.7",
-    "sass": "1.77.4",
+    "sass": "1.77.5",
     "svgo": "3.3.2",
     "svgstore": "3.0.1",
     "vue": "3.4.27",
-    "vue-router": "4.3.2"
+    "vue-router": "4.3.3"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@antfu/eslint-config": "2.21.0",
+=======
+    "@antfu/eslint-config": "2.21.1",
+>>>>>>> 05f1279 (添加触底加载示例)
     "@iconify/vue": "4.1.2",
     "@types/nprogress": "0.2.3",
     "@vitejs/plugin-vue": "5.0.5",
@@ -37,7 +47,11 @@
     "typescript": "5.4.5",
     "unplugin-auto-import": "0.17.6",
     "unplugin-vue-components": "0.27.0",
+<<<<<<< HEAD
     "vite": "5.2.13",
+=======
+    "vite": "5.3.0",
+>>>>>>> 05f1279 (添加触底加载示例)
     "vite-plugin-mock": "3.0.2",
     "vue-tsc": "2.0.21"
   }
