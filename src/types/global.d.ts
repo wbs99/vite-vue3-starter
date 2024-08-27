@@ -23,13 +23,3 @@ type Pager = {
   currentPage: number
   perPage: number
 }
-
-type Course = {
-  id: number
-  name: string
-}
-
-type Tag = {
-  id:number
-  tagName:string
-}

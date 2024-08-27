@@ -49,8 +49,8 @@
     </div>
     <div v-else>
       <ul>
-        <li v-for="tag in flattenedTagList" :key="tag.id" class="py-4">
-          {{ tag.tagName }}
+        <li v-for="tagItem in flattenedTagList" :key="tagItem.id" class="py-4">
+          {{ tagItem.tagName }}
         </li>
       </ul>
       <button
@@ -68,8 +68,8 @@
 
 <script lang="ts" setup>
 import { useIntersectionObserver } from '@vueuse/core'
-
 import { useFetchMe } from '../api/meApi'
+import type { TagParams } from '../api/tagApi'
 import { useAddTag, useFetchTag, useFetchTagList, useUpdateTag } from '../api/tagApi'
 
 const {meData, isMePending, isMeError, meError} = useFetchMe()
@@ -84,7 +84,7 @@ const onAddTag = () => {
 
 const {isUpdateTagPending, isUpdateTagError, updateTagError, isUpdateTagSuccess, updateTag} = useUpdateTag()
 
-const onUpdateTag = (data: Partial<Tag>) => {
+const onUpdateTag = (data: TagParams) => {
   updateTag(data)
 }
 

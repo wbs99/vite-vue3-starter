@@ -1,6 +1,12 @@
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { http } from '../utils/http'
 
+export type Tag = {
+  id: number
+  tagName: string
+}
+
+export type TagParams = Partial<Tag & Pager>
 
 export const FETCH_TAG_QUERY_KEY = 'tagApi'
 export const FETCH_TAG_LIST_QUERY_KEY = 'tagListApi'
@@ -42,12 +48,12 @@ export const useFetchTagList = (params: Pager) => {
   }
 }
 
-export const addTagApi = (data: Partial<Tag>) => http.post<Resource<Tag>>('/tag', data)
+export const addTagApi = (data: TagParams) => http.post<Resource<Tag>>('/tag', data)
 
 export const useAddTag = () => {
   const queryClient = useQueryClient()
   const { isPending, isError, error, isSuccess, mutate } = useMutation({
-    mutationFn: (newTag: Partial<Tag>) => addTagApi(newTag),
+    mutationFn: (newTag: TagParams) => addTagApi(newTag),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [FETCH_TAG_QUERY_KEY] })
     }
@@ -58,12 +64,12 @@ export const useAddTag = () => {
   }
 }
 
-export const updateTagApi = (newTag: Partial<Tag>) => http.patch<Resource<Tag>>(`/tag/${newTag.id}`, newTag)
+export const updateTagApi = (newTag: TagParams) => http.patch<Resource<Tag>>(`/tag/${newTag.id}`, newTag)
 
 export const useUpdateTag = () => {
   const queryClient = useQueryClient()
   const { isPending, isError, error, isSuccess, mutate } = useMutation({
-    mutationFn: (newTag: Partial<Tag>) => updateTagApi(newTag),
+    mutationFn: (newTag: TagParams) => updateTagApi(newTag),
     onSuccess: (data, variables) => {
       console.log('这里触发了')
       queryClient.setQueryData([FETCH_TAG_QUERY_KEY, { id: variables.id }], {...data, tagName: variables.tagName})
