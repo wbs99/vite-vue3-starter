@@ -1,6 +1,14 @@
 import { useQuery } from '@tanstack/vue-query'
 import { http } from '../utils/http'
 
+export type User = {
+  id: number
+  email: string
+  name?: string
+  created_at: string
+  updated_at: string
+}
+
 export const FETCH_ME_QUERY_KEY = 'meApi'
 
 export const getJwtApi = (buttonLoading: Ref<boolean>) => http.post<{ jwt: string }>(

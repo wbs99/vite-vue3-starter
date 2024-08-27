@@ -1,5 +1,6 @@
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { http } from '../utils/http'
+import type { User } from './meApi'
 
 export type Tag = {
   id: number

@@ -1,4 +1,5 @@
 import type { MockMethod } from 'vite-plugin-mock'
+import type { User } from '../api/meApi'
 
 export const MockMe: MockMethod[] = [{
   url: '/api/v1/me',
