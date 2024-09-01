@@ -17,22 +17,12 @@ pnpm config set save-prefix=''  // 锁死 npm 版本号
 
 # Icon
 使用方式一：
-在 https://yesicon.app/ 找到喜欢的 icon ，复制 icon 名称 ，填入到 icon 属性中
-
-```vue
-<template>
-  <Icon icon="line-md:arrow-left" class="w-[1.2em] h-[1.2em]" />
-</template>
-
-<script lang="ts" setup>
-import { Icon } from '@iconify/vue'
-</script>
+在 https://yesicon.app/ 找到喜欢的 `icon` ，复制 `icon` 名称 ，填入到 `name` 中
 
 使用方式二:
-在 src/assets/icons 中添加自己喜欢的 svg ，填入到 name 属性中，重新运行 `pnpm dev`
+在 `src/assets/icons` 中添加自己喜欢的 `svg` ，填入到 `name` 中，重新运行 `pnpm dev`
 
 ```vue
 <template>
-  <MyIcon name="loading" />
+  <SvgIcon name="line-md:arrow-left" />
 </template>
-```
