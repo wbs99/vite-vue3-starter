@@ -1,6 +1,7 @@
 import '@svgstore'
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import { createPinia } from 'pinia'
+import { ConfigProvider } from 'vant'
 import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/stylesheets/nprogress.scss'
@@ -14,4 +15,5 @@ const app = createApp(App)
 app.use(router)
 app.use(pinia)
 app.use(VueQueryPlugin)
+app.use(ConfigProvider)
 app.mount('#app')
