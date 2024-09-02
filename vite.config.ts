@@ -1,17 +1,18 @@
+import path from 'node:path'
+import process from 'node:process'
 import { VantResolver } from '@vant/auto-import-resolver'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
-import { svgstore } from './src/vite_plugins/svgstore'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig(() => {
   return {
     plugins: [
       vue(),
-      svgstore(),
       viteMockServe({
         mockPath: 'src/mock',
       }),
@@ -33,6 +34,10 @@ export default defineConfig(() => {
         include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/],
         dts: '/src/types/components.d.ts',
         resolvers: [VantResolver()],
+      }),
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+        symbolId: '[name]',
       }),
     ],
     server: {
@@ -57,6 +62,9 @@ export default defineConfig(() => {
             }
             if (id.includes('node_modules')) {
               return 'vendor'
+            }
+            if (id.includes('vant')) {
+              return 'vant'
             }
           }
         }

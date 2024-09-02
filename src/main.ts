@@ -1,7 +1,7 @@
-import '@svgstore'
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import { createPinia } from 'pinia'
 import { ConfigProvider } from 'vant'
+import 'virtual:svg-icons-register'
 import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/stylesheets/nprogress.scss'

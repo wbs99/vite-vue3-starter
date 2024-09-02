@@ -5,7 +5,7 @@ export const useLongPress = (onLongPress: () => void) => {
   const pressElement = ref<HTMLDivElement>()
   const onTouchStart = (e: TouchEvent) => {
     pressElement.value = e.currentTarget as HTMLDivElement
-    timer.value = setTimeout(() => {
+    timer.value = window.setTimeout(() => {
       onLongPress()
     }, 500)
   }

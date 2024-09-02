@@ -1,5 +1,7 @@
 <template>
   <div>
+    <SvgIcon name="line-md:arrow-left" />
+    <SvgIcon name="mangosteen" />
     <van-button type="primary" @click="pickerVisible = true">
       主要按钮
     </van-button>
