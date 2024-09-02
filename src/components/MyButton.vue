@@ -6,15 +6,13 @@
 </template>
 
 <script lang="ts" setup>
-defineProps({
-  buttonName: {
-    type: String,
-    default: '登录'
-  },
-  buttonLoading: {
-    type: Boolean,
-    default: false
-  }
+type Props = {
+  buttonName: string
+  buttonLoading: boolean
+}
+withDefaults(defineProps<Props>(), {
+  buttonName: '登录',
+  buttonLoading: false
 })
 </script>
 

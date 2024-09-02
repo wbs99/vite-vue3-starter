@@ -11,15 +11,13 @@
 <script lang="ts" setup>
 import { useIntersectionObserver } from '@vueuse/core'
 
-defineProps ({
-  isLoading: {
-    type: Boolean,
-    default: false
-  },
-  hasMore: {
-    type: Boolean,
-    default: false
-  }
+type Props = {
+  isLoading: boolean
+  hasMore: boolean
+}
+withDefaults(defineProps<Props>(), {
+  isLoading: false,
+  hasMore: false
 })
 
 const emit = defineEmits(['infinite'])
