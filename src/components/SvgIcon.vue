@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue'
 
 type Props = {
   name: string

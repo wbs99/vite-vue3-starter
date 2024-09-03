@@ -1,6 +1,6 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { getJwt, removeJwt } from './storage'
+import { getJwt, removeJwt } from '../utils/storage'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
 type PostConfig = Omit<AxiosRequestConfig, 'url' | 'data' | 'method'>
@@ -30,7 +30,7 @@ export class Http {
   }
 }
 
-export const http = new Http('/api/v1')
+export const http = new Http(`${import.meta.env.VITE_APP_BASEURL}${import.meta.env.VITE_APP_API_URL}`)
 
 // set header and start loading
 http.instance.interceptors.request.use((config) => {

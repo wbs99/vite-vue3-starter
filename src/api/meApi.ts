@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/vue-query'
-import { http } from '../utils/http'
+import { http } from './http'
 
 export type User = {
   id: number

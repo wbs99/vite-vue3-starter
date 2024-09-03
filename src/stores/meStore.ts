@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
+import { http } from '../api/http'
 import type { User } from '../api/meApi'
-import { http } from '../utils/http'
 
 export const useMeStore = defineStore(
   'meStore',

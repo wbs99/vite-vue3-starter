@@ -9,8 +9,21 @@ import { viteMockServe } from 'vite-plugin-mock'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
-export default defineConfig(() => {
+export default defineConfig(({ command }) => {
   return {
+    // base: mode === 'production' ? './' : '/',
+    // https://cn.vitejs.dev/config/server-options#server-proxy
+    server: {
+      open: false,
+      host: true,
+      proxy: {
+        '^/api/.*': {
+          target: 'http://118.31.32.176:3000',
+          changeOrigin: command === 'serve',
+          // rewrite: path => path.replace(/^\/api/, ''),
+        },
+      }
+    },
     plugins: [
       vue(),
       viteMockServe({
@@ -40,16 +53,7 @@ export default defineConfig(() => {
         symbolId: '[name]',
       }),
     ],
-    server: {
-      open: false, // 自动打开浏览器
-      host: true,
-      // proxy: {
-      //   '/api/v1': {
-      //     target: 'http://121.196.236.94:3000/',
-      //     changeOrigin: true,
-      //   }
-      // }
-    },
+
     build: {
       rollupOptions: {
         output: {
