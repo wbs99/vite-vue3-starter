@@ -30,7 +30,7 @@ export class Http {
   }
 }
 
-export const http = new Http(`${import.meta.env.VITE_APP_BASEURL}${import.meta.env.VITE_APP_API_URL}`)
+export const http = new Http(import.meta.env.VITE_APP_BASEURL)
 
 // set header and start loading
 http.instance.interceptors.request.use((config) => {
