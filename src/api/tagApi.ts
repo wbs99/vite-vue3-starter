@@ -56,7 +56,7 @@ export const useAddTag = () => {
   const { isPending, isError, error, isSuccess, mutate } = useMutation({
     mutationFn: (newTag: TagParams) => addTagApi(newTag),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [FETCH_TAG_QUERY_KEY] })
+      queryClient.invalidateQueries({ queryKey: [FETCH_TAG_LIST_QUERY_KEY] })
     }
   })
 

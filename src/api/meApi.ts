@@ -1,6 +1,11 @@
 import { useQuery } from '@tanstack/vue-query'
 import { http } from './http'
 
+export type LoginForm = {
+  email: string
+  code: string
+}
+
 export type User = {
   id: number
   email: string
@@ -11,9 +16,12 @@ export type User = {
 
 export const FETCH_ME_QUERY_KEY = 'meApi'
 
-export const getJwtApi = (buttonLoading: Ref<boolean>) => http.post<{ jwt: string }>(
-  '/session',
-  { email: '1134954328@qq.com', code: 123456 },
+export const loginApi = (
+  loginForm: LoginForm,
+  buttonLoading: Ref<boolean>
+) => http.post<{ jwt: string }>(
+  '/login',
+  loginForm,
   { _buttonLoading: buttonLoading }
 )
 

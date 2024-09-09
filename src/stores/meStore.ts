@@ -17,6 +17,10 @@ export const useMeStore = defineStore(
 
     const getMePromise = () => http.get<Resource<User>>('/me')
 
-    return { me, setMe, getMePromise }
+    return {
+      me,
+      setMe,
+      getMePromise
+    }
   }
 )

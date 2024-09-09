@@ -1,8 +1,9 @@
 import type { MockMethod } from 'vite-plugin-mock'
-import { MockSession } from './MockSession'
+import { MockLogin } from './MockLogin'
 import { MockMe } from './mockMe'
+import { MockPermission } from './mockPermissions'
 import { MockTag } from './mockTag'
 
 export default [
-  ...MockMe, ...MockSession, ...MockTag
+  ...MockLogin, ...MockMe, ...MockTag, ...MockPermission
 ] as MockMethod[]
