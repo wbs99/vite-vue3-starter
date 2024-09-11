@@ -69,9 +69,8 @@
 <script lang="ts" setup>
 import { useIntersectionObserver } from '@vueuse/core'
 import { useFetchMe } from '../api/meApi'
-import { getPermissionApi } from '../api/permissionApi'
-import type { TagParams } from '../api/tagApi'
 import { useAddTag, useFetchTag, useFetchTagList, useUpdateTag } from '../api/tagApi'
+import type { TagParams } from '../api/tagApi'
 
 const {meData, isMePending, isMeError, meError} = useFetchMe()
 
@@ -102,11 +101,4 @@ useIntersectionObserver(
     }
   }
 )
-
-const getPermission = async () => {
-  const response = await getPermissionApi()
-  console.log(response.data.resource.permissions)
-}
-
-getPermission()
 </script>

@@ -15,6 +15,9 @@ git remote remove origin
 pnpm config set save-prefix=''  // 锁死 npm 版本号
 ```
 
+# 权限验证
+https://fantastic-admin.hurui.me/guide/permission.html
+
 # Icon
 使用方式一：
 在 https://yesicon.app/ 找到喜欢的 `icon` ，复制 `icon` 名称 ，填入到 `name` 中

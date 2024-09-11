@@ -1,8 +1,8 @@
 import { useNProgress } from '@vueuse/integrations/useNProgress'
-import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
-import { useMeStore } from '../stores/meStore'
+import type { RouteRecordRaw } from 'vue-router'
 import { fetchMeApi } from '../api/meApi'
+import { useMeStore } from '../stores/meStore'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/home' },
@@ -43,6 +43,7 @@ router.beforeEach(async (to) => {
     async () => {
       const response = await fetchMeApi()
       meStore.setMe(response.data.resource)
+      meStore.getPermissions()
       return true
     },
     () => `/login?return_to=${to.path}`

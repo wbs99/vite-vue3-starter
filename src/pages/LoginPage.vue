@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { LoginForm } from '../api/meApi'
 import { loginApi } from '../api/meApi'
 import { setJwt } from '../utils/storage'
+import type { LoginForm } from '../api/meApi'
 
 const route = useRoute()
 const router = useRouter()
