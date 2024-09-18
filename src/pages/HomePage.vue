@@ -67,10 +67,10 @@
 </template>
 
 <script lang="ts" setup>
+import type { TagParams } from '../api/tagApi'
 import { useIntersectionObserver } from '@vueuse/core'
 import { useFetchMe } from '../api/meApi'
 import { useAddTag, useFetchTag, useFetchTagList, useUpdateTag } from '../api/tagApi'
-import type { TagParams } from '../api/tagApi'
 
 const {meData, isMePending, isMeError, meError} = useFetchMe()
 

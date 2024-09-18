@@ -1,6 +1,6 @@
-import { computed, onMounted, ref } from 'vue'
 import type { AxiosResponse } from 'axios'
 import type { Ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 export const useList = <T extends Pager, DataType>(
   listParams: T,
