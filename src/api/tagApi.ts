@@ -7,17 +7,15 @@ export type Tag = {
   tagName: string
 }
 
-export type TagParams = Partial<Tag & Pager>
+export type TagParams = Partial<Tag> & Pager
 
-export const GET_TAG_QUERY_KEY = 'GET_TAG_QUERY_KEY'
-export const GET_TAG_LIST_QUERY_KEY = 'FETCH_TAG_LIST_QUERY_KEY'
+export const GET_TAG = 'GET_TAG'
 
-export const getTagApi = (tagId: number) => http.get<Resource<Tag>>(`/tag/${tagId}`)
 export const useGetTag = (me: Ref<User | undefined>, tagId: number) => {
   const { isPending, data } = useQuery({
-    queryKey: [GET_TAG_QUERY_KEY, me, tagId],
+    queryKey: [GET_TAG, me, tagId],
     queryFn: async () => {
-      const response = await getTagApi(tagId)
+      const response = await http.get<Resource<Tag>>(`/tag/${tagId}`)
       return response.data.resource
     },
     enabled: computed(() => !!me.value?.id)
@@ -27,13 +25,14 @@ export const useGetTag = (me: Ref<User | undefined>, tagId: number) => {
   }
 }
 
-export const getTagListApi = (data: Pager) => http.get<Resources<Tag>>('/tags', data)
+export const GET_TAGS = 'GET_TAGS'
+
 export const useGetTagList = (params: Pager) => {
   const { currentPage, perPage } = params
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError, isPending } = useInfiniteQuery({
-    queryKey: [GET_TAG_LIST_QUERY_KEY],
+    queryKey: [GET_TAGS],
     queryFn: async ({ pageParam = currentPage }) => {
-      const response = await getTagListApi({ ...params, currentPage: pageParam })
+      const response = await http.get<Resources<Tag>>('/tags', { ...params, currentPage: pageParam })
       return response.data
     },
     initialPageParam: currentPage,
@@ -43,17 +42,16 @@ export const useGetTagList = (params: Pager) => {
   })
 
   return {
-    tagList: data, fetchMoreTag: fetchNextPage, hasMoreTag: hasNextPage, isFetchingMoreTag: isFetchingNextPage, isFetchTagError: isError, isFetchingTagPending: isPending,
+    tags: data, fetchMoreTag: fetchNextPage, hasMoreTag: hasNextPage, isFetchingMoreTag: isFetchingNextPage, isFetchTagError: isError, isFetchingTagPending: isPending,
   }
 }
 
-export const addTagApi = (data: TagParams) => http.post<Resource<Tag>>('/tag', data)
 export const useAddTag = () => {
   const queryClient = useQueryClient()
   const { isPending, isError, error, isSuccess, mutate } = useMutation({
-    mutationFn: (newTag: TagParams) => addTagApi(newTag),
+    mutationFn: (newTag: Partial<Tag>) => http.post<Resource<Tag>>('/tag', newTag),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [GET_TAG_LIST_QUERY_KEY] })
+      queryClient.invalidateQueries({ queryKey: [GET_TAGS] })
     }
   })
   return {
@@ -61,14 +59,13 @@ export const useAddTag = () => {
   }
 }
 
-export const updateTagApi = (newTag: TagParams) => http.patch<Resource<Tag>>(`/tag/${newTag.id}`, newTag)
 export const useUpdateTag = () => {
   const queryClient = useQueryClient()
   const { isPending, isError, error, isSuccess, mutate } = useMutation({
-    mutationFn: (newTag: TagParams) => updateTagApi(newTag),
+    mutationFn: (newTag: Partial<Tag>) => http.patch<Resource<Tag>>(`/tag/${newTag.id}`, newTag),
     onSuccess: (data, variables) => {
       console.log('这里触发了')
-      queryClient.setQueryData([GET_TAG_QUERY_KEY, { id: variables.id }], {...data, tagName: variables.tagName})
+      queryClient.setQueryData([GET_TAG, { id: variables.id }], { ...data, tagName: variables.tagName })
     }
   })
 

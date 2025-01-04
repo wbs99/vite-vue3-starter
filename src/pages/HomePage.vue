@@ -21,7 +21,7 @@
       class="btn btn-primary"
       @click="onAddTag"
     >
-      <span>新增标签</span>
+      <button>新增标签</button>
       <span v-if="isAddTagPending">正在新增标签...</span>
       <span v-if="isAddTagError">新增标签失败，失败信息 -- {{ addTagError }}</span>
       <span v-if="isAddTagSuccess">新增标签成功</span>
@@ -38,7 +38,7 @@
       <span v-if="isUpdateTagSuccess">更新标签成功</span>
     </button>
 
-    <div v-if="!tagList">
+    <div v-if="!tags">
       <CenterDiv v-if="isFetchTagError">
         数据加载失败，请刷新页面
       </CenterDiv>
@@ -66,7 +66,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { TagParams } from '../api/tagApi'
+import type { Tag } from '../api/tagApi'
 import { useIntersectionObserver } from '@vueuse/core'
 import { useFetchMe } from '../api/meApi'
 import { useAddTag, useGetTag, useGetTagList, useUpdateTag } from '../api/tagApi'
@@ -83,13 +83,13 @@ const onAddTag = () => {
 
 const {isUpdateTagPending, isUpdateTagError, updateTagError, isUpdateTagSuccess, updateTag} = useUpdateTag()
 
-const onUpdateTag = (data: TagParams) => {
+const onUpdateTag = (data: Partial<Tag>) => {
   updateTag(data)
 }
 
-const { tagList, fetchMoreTag, hasMoreTag, isFetchingMoreTag, isFetchTagError, isFetchingTagPending } = useGetTagList({currentPage: 1, perPage: 20 })
+const { tags, fetchMoreTag, hasMoreTag, isFetchingMoreTag, isFetchTagError, isFetchingTagPending } = useGetTagList({currentPage: 1, perPage: 20 })
 
-const flattenedTagList = computed(() => tagList.value?.pages?.flatMap(page => page.resources) || [])
+const flattenedTagList = computed(() => tags.value?.pages?.flatMap(page => page.resources) || [])
 
 const target = ref(null)
 useIntersectionObserver(
