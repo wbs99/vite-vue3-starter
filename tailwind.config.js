@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-import daisyui from 'daisyui'
-
 export default {
   darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
@@ -25,6 +23,5 @@ export default {
       addVariant('child', '& > *')
       addVariant('child-hover', '& > *:hover')
     },
-    daisyui,
   ],
 }
