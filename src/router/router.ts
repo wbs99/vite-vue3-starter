@@ -12,6 +12,9 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/home', component: () => import('../pages/HomePage.vue'),
   },
+  {
+    path: '/test', component: () => import('../pages/TestPage.vue'),
+  },
   { path: '/:pathMatch(.*)', component: () => import('../pages/NotFoundPage.vue') },
 ]
 const history = createWebHistory()

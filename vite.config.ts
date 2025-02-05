@@ -1,5 +1,6 @@
 import path from 'node:path'
 import process from 'node:process'
+import tailwindcss from '@tailwindcss/vite'
 import { VantResolver } from '@vant/auto-import-resolver'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -16,6 +17,7 @@ export default defineConfig(({ command }) => {
     server: {
       open: false,
       host: true,
+      port: 5555,
       proxy: {
         '^/api/.*': {
           target: 'http://118.31.32.176:3000',
@@ -26,6 +28,7 @@ export default defineConfig(({ command }) => {
     },
     plugins: [
       vue(),
+      tailwindcss(),
       viteMockServe({
         mockPath: 'src/mock',
       }),

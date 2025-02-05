@@ -9,7 +9,7 @@ import { directive } from './utils/directive'
 import 'virtual:svg-icons-register'
 import './assets/stylesheets/nprogress.scss'
 import './assets/stylesheets/reset.scss'
-import './assets/stylesheets/tailwind.scss'
+import './assets/stylesheets/tailwind.css'
 import './assets/stylesheets/vars.scss'
 
 const pinia = createPinia()
