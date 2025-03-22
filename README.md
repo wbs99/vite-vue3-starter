@@ -9,10 +9,11 @@
 
 # install
 ```bash
-pnpm i
 rm -rf .git
+rm -rf node_modules pnpm-lock.yaml
 git remote remove origin
 pnpm config set save-prefix=''  // 锁死 npm 版本号
+pnpm i
 ```
 
 # 权限验证

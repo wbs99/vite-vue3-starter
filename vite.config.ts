@@ -49,7 +49,9 @@ export default defineConfig(({ command }) => {
         dirs: ['src/components'],
         include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/],
         dts: '/src/types/components.d.ts',
-        resolvers: [VantResolver()],
+        resolvers: [
+          VantResolver(),
+        ],
       }),
       createSvgIconsPlugin({
         iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
