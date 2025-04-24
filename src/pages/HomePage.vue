@@ -1,9 +1,13 @@
 <template>
-  <div class="flex justify-center mx-auto my-50">
-    <MotionDemo />
+  <div>
+    1
   </div>
 </template>
 
 <script lang="ts" setup>
-import MotionDemo from './MotionDemo.vue'
+
 </script>
+
+<style lang="scss" scoped>
+
+</style>
