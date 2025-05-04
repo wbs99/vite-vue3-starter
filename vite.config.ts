@@ -1,7 +1,6 @@
 import path from 'node:path'
 import process from 'node:process'
 import tailwindcss from '@tailwindcss/vite'
-import { VantResolver } from '@vant/auto-import-resolver'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -43,15 +42,11 @@ export default defineConfig(({ command }) => {
         ],
         dts: './src/types/auto-import.d.ts',
         vueTemplate: true,
-        resolvers: [VantResolver()],
       }),
       Components({
         dirs: ['src/components'],
         include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/],
         dts: '/src/types/components.d.ts',
-        resolvers: [
-          VantResolver(),
-        ],
       }),
       createSvgIconsPlugin({
         iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
@@ -71,9 +66,6 @@ export default defineConfig(({ command }) => {
             }
             if (id.includes('node_modules')) {
               return 'vendor'
-            }
-            if (id.includes('vant')) {
-              return 'vant'
             }
           }
         }
