@@ -1,7 +1,7 @@
 <template>
-  <button :disabled="buttonLoading" class="w-btn">
+  <button :disabled="buttonLoading" class="flex items-center gap-1 py-2 px-4 rounded text-white bg-purple-500">
     <SvgIcon v-show="buttonLoading" class="mr-3 animate-1s animate-spin" name="loading" />
-    {{ buttonName }}
+    <span>{{ buttonName }}</span>
   </button>
 </template>
 

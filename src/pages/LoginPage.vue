@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center h-screen mx-6">
-    <MyButton class="mb-6" :button-loading="loginLoading" @click="onLogin" />
+    <MyButton class="mb-6" :button-loading="loginLoading" button-name="登录" @click="onLogin" />
   </div>
 </template>
 
