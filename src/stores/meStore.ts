@@ -1,6 +1,5 @@
 import type { User } from '../api/meApi'
 import { defineStore } from 'pinia'
-import { reactive } from 'vue'
 import { http } from '../api/http'
 import { getPermissionApi } from '../api/permissionApi'
 

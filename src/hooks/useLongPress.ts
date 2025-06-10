@@ -1,5 +1,3 @@
-import { ref } from 'vue'
-
 export const useLongPress = (onLongPress: () => void) => {
   const timer = ref<number>()
   const pressElement = ref<HTMLDivElement>()

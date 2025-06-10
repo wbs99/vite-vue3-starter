@@ -4,12 +4,12 @@ import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { defineConfig } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => {
+
+export default async ({ command }) => {
   return {
     // base: mode === 'production' ? './' : '/',
     // https://cn.vitejs.dev/config/server-options#server-proxy
@@ -80,4 +80,4 @@ export default defineConfig(({ command }) => {
       legalComments: 'none'
     },
   }
-})
+}
