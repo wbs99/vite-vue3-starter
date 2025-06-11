@@ -2,11 +2,3 @@
 https://tailwindcss.com/docs/preflight */
 
 @import "tailwindcss";
-
-
-@layer components {
-  .card {
-    color: red;
-    padding: 16px;
-  }
-}
