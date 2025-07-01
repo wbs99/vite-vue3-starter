@@ -46,10 +46,5 @@
     "vite-plugin-svg-icons": "2.0.1",
     "vue-tsc": "2.2.10"
 
-  },
-  "pnpm": {
-    "overrides": {
-      "vite": "npm:rolldown-vite@latest"
-    }
   }
 }
