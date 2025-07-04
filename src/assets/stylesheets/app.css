@@ -1,3 +1,8 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --light;
+}
+
 /* css 变量 */
 :root{
   --g-nprogress-color: #1d7dfa;

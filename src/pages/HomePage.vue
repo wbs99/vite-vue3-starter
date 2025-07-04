@@ -1,6 +1,9 @@
 <template>
   <div>
-    home page
+    <h1>home page</h1>
+    <button class="btn btn-primary">
+      Primary
+    </button>
   </div>
 </template>
 
