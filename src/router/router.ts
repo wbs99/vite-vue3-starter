@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { createRouter, createWebHistory } from 'vue-router'
-import { fetchMeApi } from '../api/meApi'
+import { fetchMeApi } from '../api/me-api'
 import { useMeStore } from '../stores/meStore'
 
 const routes: RouteRecordRaw[] = [

@@ -12,7 +12,7 @@ type Props = {
   name: string
 }
 const props = withDefaults(defineProps<Props>(), {
-  name: 'mangosteen',
+  name: 'mangosteen-icon',
 })
 
 const outputType = computed(() =>

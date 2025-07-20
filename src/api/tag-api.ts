@@ -1,4 +1,4 @@
-import type { User } from './meApi'
+import type { User } from './me-api'
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { http } from './http'
 

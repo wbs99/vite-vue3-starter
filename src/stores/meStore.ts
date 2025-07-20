@@ -1,7 +1,7 @@
-import type { User } from '../api/meApi'
+import type { User } from '../api/me-api'
 import { defineStore } from 'pinia'
 import { http } from '../api/http'
-import { getPermissionApi } from '../api/permissionApi'
+import { getPermissionApi } from '../api/permission-api'
 
 export const useMeStore = defineStore(
   'meStore',

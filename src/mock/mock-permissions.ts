@@ -1,5 +1,5 @@
 import type { MockMethod } from 'vite-plugin-mock'
-import type { PermissionResponse } from '../api/permissionApi'
+import type { PermissionResponse } from '../api/permission-api'
 
 export const MockPermission: MockMethod[] = [
   {

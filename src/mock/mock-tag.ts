@@ -1,5 +1,5 @@
 import type { MockMethod } from 'vite-plugin-mock'
-import type { Tag } from '../api/tagApi'
+import type { Tag } from '../api/tag-api'
 import { faker } from '@faker-js/faker'
 
 type Data = Tag

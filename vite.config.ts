@@ -13,7 +13,6 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 export default async ({ mode, command }) => {
   return {
     base: mode === 'production' ? '/zhengwu/' : '/',
-
     // https://cn.vitejs.dev/config/server-options#server-proxy
     server: {
       open: false,
