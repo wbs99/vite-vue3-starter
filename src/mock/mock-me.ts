@@ -1,11 +1,11 @@
 import type { MockMethod } from 'vite-plugin-mock'
-import type { User } from '../api/me-api'
+import type { Me } from '../api/me-api'
 
 export const MockMe: MockMethod[] = [{
   url: '/api/v1/me',
   method: 'get',
   statusCode: 200,
-  response: (): Resource<User> => {
+  response: (): Resource<Me> => {
     return {
       resource: {
         id: 1,

@@ -1,53 +1,63 @@
-import type { RouteRecordRaw } from 'vue-router'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
-import { createRouter, createWebHistory } from 'vue-router'
-import { fetchMeApi } from '../api/me-api'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import { useMeStore } from '../stores/meStore'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/home' },
   {
-    path: '/login', component: () => import('../pages/LoginPage.vue'),
+    path: '/login',
+    component: () => import('../pages/LoginPage.vue')
   },
   {
-    path: '/home', component: () => import('../pages/HomePage.vue'),
+    path: '/home',
+    component: () => import('../pages/HomePage.vue')
   },
-  { path: '/:pathMatch(.*)', component: () => import('../pages/NotFoundPage.vue') },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('../pages/NotFoundPage.vue')
+  }
 ]
-const history = createWebHistory()
 
-export const router = createRouter({ history, routes })
+export const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
 
 const whiteList: Record<string, 'exact' | 'startsWith'> = {
   '/': 'exact',
-  '/start': 'exact',
-  '/welcome': 'startsWith',
   '/login': 'startsWith',
+  '/start': 'exact',
+  '/welcome': 'startsWith'
+}
+
+function isWhiteListed(path: string) {
+  return Object.entries(whiteList).some(([key, mode]) =>
+    mode === 'exact' ? path === key : path.startsWith(key)
+  )
 }
 
 const { isLoading } = useNProgress()
+
 router.beforeEach(async (to) => {
-  const meStore = useMeStore()
   isLoading.value = true
-  for (const key in whiteList) {
-    const value = whiteList[key]
-    if (value === 'exact' && to.path === key) {
-      return true
-    }
-    if (value === 'startsWith' && to.path.startsWith(key)) {
-      return true
-    }
+
+  if (isWhiteListed(to.path)) {
+    return true
   }
 
-  return meStore.getMePromise()!.then(
-    async () => {
-      const response = await fetchMeApi()
-      meStore.setMe(response.data.resource)
-      meStore.getPermissions()
-      return true
-    },
-    () => `/login?return_to=${to.path}`
-  )
+  const meStore = useMeStore()
+
+  // 如果 Pinia 中已有用户信息，跳过请求
+  if (meStore.me.id) {
+    return true
+  }
+
+  const ok = await meStore.isAuthenticated()
+  if (!ok) {
+    return `/login?return_to=${encodeURIComponent(to.fullPath)}`
+  }
+
+  return true
 })
 
 router.afterEach(() => {

@@ -1,4 +1,4 @@
-import type { User } from './me-api'
+import type { Me } from './me-api'
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { http } from './http'
 
@@ -11,7 +11,7 @@ export type TagParams = Partial<Tag> & Pager
 
 export const GET_TAG = 'GET_TAG'
 
-export const useGetTag = (me: Ref<User | undefined>, tagId: number) => {
+export const useGetTag = (me: Ref<Me | undefined>, tagId: number) => {
   const { isPending, data } = useQuery({
     queryKey: [GET_TAG, me, tagId],
     queryFn: async () => {

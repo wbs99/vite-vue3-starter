@@ -1,7 +1,7 @@
 import { http } from './http'
 
-export type PermissionResponse = {
+export type Permission = {
   permissions: string[]
 }
 
-export const getPermissionApi = () => http.get<Resource<PermissionResponse>>('/permission')
+export const fetchPermissionApi = () => http.get<Resource<Permission>>('/permission')

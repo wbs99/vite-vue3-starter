@@ -1,12 +1,12 @@
 import type { MockMethod } from 'vite-plugin-mock'
-import type { PermissionResponse } from '../api/permission-api'
+import type { Permission } from '../api/permission-api'
 
 export const MockPermission: MockMethod[] = [
   {
     url: '/api/v1/permission',
     method: 'get',
     timeout: 100,
-    response: (): Resource<PermissionResponse> => {
+    response: (): Resource<Permission> => {
       return {
         resource: {
           permissions: [

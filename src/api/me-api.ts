@@ -6,7 +6,7 @@ export type LoginForm = {
   code: string
 }
 
-export type User = {
+export type Me = {
   id: number
   email: string
   name?: string
@@ -25,7 +25,7 @@ export const loginApi = (
   { _buttonLoading: buttonLoading }
 )
 
-export const fetchMeApi = () => http.get<Resource<User>>('/me')
+export const fetchMeApi = () => http.get<Resource<Me>>('/me')
 
 export const useFetchMe = () => {
   const { isPending, isError, data, error } = useQuery({
