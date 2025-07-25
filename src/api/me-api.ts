@@ -16,10 +16,7 @@ export type Me = {
 
 export const FETCH_ME_QUERY_KEY = 'meApi'
 
-export const loginApi = (
-  loginForm: LoginForm,
-  buttonLoading: Ref<boolean>
-) => http.post<{ jwt: string }>(
+export const loginApi = (loginForm: LoginForm, buttonLoading: Ref<boolean>) => http.post<{ jwt: string }>(
   '/login',
   loginForm,
   { _buttonLoading: buttonLoading }

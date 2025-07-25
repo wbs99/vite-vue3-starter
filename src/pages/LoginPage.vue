@@ -7,10 +7,12 @@
 <script lang="ts" setup>
 import type { LoginForm } from '../api/me-api'
 import { loginApi } from '../api/me-api'
+import { useMeStore } from '../stores/meStore'
 import { setJwt } from '../utils/storage'
 
 const route = useRoute()
 const router = useRouter()
+const meStore = useMeStore()
 
 const loginLoading = ref(false)
 
@@ -21,6 +23,7 @@ const loginForm = reactive<LoginForm>({
 const onLogin = async () => {
   const response = await loginApi(loginForm, loginLoading).catch(onLoginError)
   setJwt(response.data.jwt)
+  await meStore.fetchMe()
   const returnTo = route.query.return_to?.toString()
   router.push(returnTo || '/')
 }

@@ -13,13 +13,14 @@ export const GET_TAG = 'GET_TAG'
 
 export const useGetTag = (me: Ref<Me | undefined>, tagId: number) => {
   const { isPending, data } = useQuery({
-    queryKey: [GET_TAG, me, tagId],
+    queryKey: [GET_TAG, tagId],
     queryFn: async () => {
       const response = await http.get<Resource<Tag>>(`/tag/${tagId}`)
       return response.data.resource
     },
-    enabled: computed(() => !!me.value?.id)
+    enabled: computed(() => !!me.value?.id),
   })
+
   return {
     tag: data, isTagPending: isPending
   }
