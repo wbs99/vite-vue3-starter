@@ -32,11 +32,11 @@ export class Http {
 
 export const http = new Http(import.meta.env.VITE_APP_BASEURL)
 
-// set header and start loading
 http.instance.interceptors.request.use((config) => {
   const jwt = getJwt()
+  config.headers = config.headers ?? {}
   if (jwt) {
-    config.headers!.Authorization = `Bearer ${jwt}`
+    config.headers.Authorization = `Bearer ${jwt}`
   }
   if (config._buttonLoading !== undefined) {
     config._buttonLoading.value = true
@@ -44,7 +44,6 @@ http.instance.interceptors.request.use((config) => {
   return config
 })
 
-// cancel loading
 http.instance.interceptors.response.use(
   (response) => {
     if (response.config._buttonLoading !== undefined) {
@@ -54,46 +53,26 @@ http.instance.interceptors.response.use(
   },
   (error: AxiosError) => {
     if (error.response?.config._buttonLoading !== undefined) {
-      const configClone = { ...error.response.config }
-      configClone._buttonLoading!.value = false
-      error.response.config = configClone
+      error.response.config._buttonLoading.value = false
     }
-    throw error
-  })
-
-// errors
-http.instance.interceptors.response.use(
-  (response) => {
-    return response
-  },
-  (error: AxiosError) => {
     if (error.response) {
       const { status } = error.response
       const fn = table[status]
       fn?.()
     }
-    throw error
+    return Promise.reject(error)
   }
 )
 
-const table: Record<string, undefined | (() => void)> = {
+const table: Record<string, (() => void) | undefined> = {
   401: () => {
     window.alert('登录状态过期，请重新登录')
     removeJwt()
+    window.location.href = '/login'
   },
-  402: () => {
-    window.alert('请付费后观看')
-  },
-  403: () => {
-    window.alert('没有权限')
-  },
-  408: () => {
-    window.alert('请求超时')
-  },
-  429: () => {
-    window.alert('请求过于频繁')
-  },
-  500: () => {
-    window.alert('服务器错误')
-  }
+  402: () => window.alert('请付费后观看'),
+  403: () => window.alert('没有权限'),
+  408: () => window.alert('请求超时'),
+  429: () => window.alert('请求过于频繁'),
+  500: () => window.alert('服务器错误'),
 }
