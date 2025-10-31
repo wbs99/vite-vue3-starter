@@ -48,9 +48,9 @@ router.beforeEach(async (to) => {
   const meStore = useMeStore()
 
   // 如果 Pinia 中已有用户信息，跳过请求
-  if (meStore.me.id) {
-    return true
-  }
+  // if (meStore.me.id) {
+  //   return true
+  // }
 
   const ok = await meStore.isAuthenticated()
   if (!ok) {
