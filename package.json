@@ -19,6 +19,7 @@
     "@vueuse/integrations": "13.5.0",
     "autofit.js": "3.2.8",
     "axios": "1.10.0",
+    "daisyui": "4",
     "dayjs": "1.11.13",
     "echarts": "5.6.0",
     "media-chrome": "4.12.0",
