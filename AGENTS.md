@@ -205,7 +205,6 @@ pnpm lint                   # 运行 ESLint 并自动修复
 ### 性能
 - 禁止动画化大型 `blur()` 或 `backdrop-filter` 表面
 - 禁止在活动动画之外应用 `will-change`
-- 禁止将 `useEffect` 用于任何可以表达为渲染逻辑的内容
 
 ### 设计
 - 除非明确要求，否则不要使用渐变
