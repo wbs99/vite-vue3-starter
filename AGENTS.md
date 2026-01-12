@@ -2,184 +2,216 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## 项目概述
 
-This is a Vue 3 web application starter template built with Vite. It provides a modern foundation for developing SPA (Single Page Application) with rich features including routing, state management, data fetching, and UI components.
+这是一个基于 Vite 构建的 Vue 3 Web 应用 starter 模板。它为开发 SPA（单页应用）提供了现代化基础，包含路由、状态管理、数据获取和 UI 组件等丰富功能。
 
-## Tech Stack
+## 技术栈
 
-- **Frontend Framework**: Vue 3.5.17
-- **Build Tool**: Vite 6.0.3
-- **Routing**: Vue Router 4.5.1
-- **State Management**: Pinia 3.0.3 + pinia-plugin-persistedstate 4.3.0
-- **Data Fetching**: @tanstack/vue-query 5.81.5 + Axios 1.10.0
-- **Styling**: Tailwind CSS 3.4.16 + DaisyUI 4 + Sass 1.89.2
-- **Type Checking**: TypeScript 5.8.3
-- **Code Linting**: ESLint 9.12.0 with @antfu/eslint-config
-- **Package Manager**: pnpm 9.6.0 (required)
-- **Auto Import**: unplugin-auto-import 19.3.0 + unplugin-vue-components 28.8.0
-- **Icon System**: @iconify/vue 5.0.0 + vite-plugin-svg-icons
-- **Mock Data**: vite-plugin-mock 3.0.1
-- **Browser Compatibility**: @vitejs/plugin-legacy (Chrome 75+)
+- **前端框架**: Vue 3.5.17
+- **构建工具**: Vite 6.0.3
+- **路由**: Vue Router 4.5.1
+- **状态管理**: Pinia 3.0.3 + pinia-plugin-persistedstate 4.3.0
+- **数据获取**: @tanstack/vue-query 5.81.5 + Axios 1.10.0
+- **样式**: Tailwind CSS 3.4.16 + DaisyUI 4 + Sass 1.89.2
+- **类型检查**: TypeScript 5.8.3
+- **代码规范**: ESLint 9.12.0 with @antfu/eslint-config
+- **包管理器**: pnpm 9.6.0 (required)
+- **自动导入**: unplugin-auto-import 19.3.0 + unplugin-vue-components 28.8.0
+- **图标系统**: @iconify/vue 5.0.0 + vite-plugin-svg-icons
+- **Mock 数据**: vite-plugin-mock 3.0.1
+- **浏览器兼容**: @vitejs/plugin-legacy (Chrome 75+)
 
-## Development Commands
+## 开发命令
 
 ```bash
-# Install dependencies
+# 安装依赖
 pnpm install
 
-# Development
-pnpm dev                    # Start dev server (default port: 5555)
-pnpm build                  # Build for production
-pnpm preview                # Preview production build locally
+# 开发
+pnpm dev                    # 启动开发服务器 (默认端口: 5555)
+pnpm build                  # 构建生产版本
+pnpm preview                # 本地预览生产构建
 
-# Code Quality
-pnpm lint                   # Run ESLint and auto-fix
+# 代码质量
+pnpm lint                   # 运行 ESLint 并自动修复
 ```
 
-## Architecture
+## 架构
 
-### Project Structure
-- `src/main.ts` - Application entry point
-- `src/App.vue` - Root component
-- `src/router/router.ts` - Vue Router configuration
-- `src/stores/` - Pinia state management stores
-- `src/pages/` - Page components
-- `src/components/` - Reusable components
-- `src/api/` - API interface definitions
-- `src/mock/` - Mock data for development
-- `src/utils/` - Utility functions
-- `src/hooks/` - Custom Composition API hooks
-- `src/assets/` - Static assets (icons, styles, etc.)
-- `src/types/` - TypeScript type definitions
-- `vite.config.ts` - Vite build configuration
-- `eslint.config.js` - ESLint configuration
-- `tailwind.config.js` - Tailwind CSS configuration
+### 项目结构
+- `src/main.ts` - 应用入口
+- `src/App.vue` - 根组件
+- `src/router/router.ts` - Vue Router 配置
+- `src/stores/` - Pinia 状态管理 stores
+- `src/pages/` - 页面组件
+- `src/components/` - 可复用组件
+- `src/api/` - API 接口定义
+- `src/mock/` - 开发环境 Mock 数据
+- `src/utils/` - 工具函数
+- `src/hooks/` - 自定义 Composition API hooks
+- `src/assets/` - 静态资源 (图标、样式等)
+- `src/types/` - TypeScript 类型定义
+- `vite.config.ts` - Vite 构建配置
+- `eslint.config.js` - ESLint 配置
+- `tailwind.config.js` - Tailwind CSS 配置
 
-### Routing System
-- Uses Vue Router for client-side routing
-- Route definitions in `src/router/router.ts`
-- Authentication guard with white list for public routes
-- Route meta information for permission control
-- Automatic route-based code splitting
+### 路由系统
+- 使用 Vue Router 实现客户端路由
+- 路由定义在 `src/router/router.ts`
+- 白名单机制实现认证守卫
+- 路由 meta 信息用于权限控制
+- 自动按路由代码分割
 
-### State Management
-- Pinia for global state management
-- Stores located in `src/stores/`
-- Persistent state via pinia-plugin-persistedstate
-- TypeScript-first store definitions
+### 状态管理
+- Pinia 实现全局状态管理
+- Stores 位于 `src/stores/`
+- 通过 pinia-plugin-persistedstate 持久化状态
+- TypeScript 优先的 store 定义
 
-### Data Flow
-1. Components fetch data via Vue Query hooks or Pinia stores
-2. API requests defined in `src/api/`
-3. Mock data available in `src/mock/` for development
-4. Response types defined in `src/types/`
+### 数据流
+1. 组件通过 Vue Query hooks 或 Pinia stores 获取数据
+2. API 请求定义在 `src/api/`
+3. 开发环境可在 `src/mock/` 使用 Mock 数据
+4. 响应类型定义在 `src/types/`
 
-### Auto Import System
-- Vue 3 composition API auto-imported (ref, reactive, computed, etc.)
-- Vue Router and Pinia auto-imported
-- Components in `src/components/` auto-imported
-- Type definitions in `src/types/auto-import.d.ts` and `src/types/components.d.ts`
+### 自动导入系统
+- Vue 3 composition API 自动导入 (ref, reactive, computed 等)
+- Vue Router 和 Pinia 自动导入
+- `src/components/` 下的组件自动导入
+- 类型定义在 `src/types/auto-import.d.ts` 和 `src/types/components.d.ts`
 
-### Icon System
-Two ways to use icons:
+### 图标系统
 
-**Method 1: Iconify (Recommended)**
-- Visit https://yesicon.app/ to find icons
-- Copy the icon name (e.g., `line-md:arrow-left`)
-- Use in component:
+**方式一：Iconify (推荐)**
+- 访问 https://yesicon.app/ 查找图标
+- 复制图标名称 (例如 `line-md:arrow-left`)
+- 在组件中使用：
 ```vue
 <template>
   <SvgIcon name="line-md:arrow-left" />
 </template>
 ```
 
-**Method 2: Custom SVG Icons**
-- Add SVG files to `src/assets/icons/`
-- Use filename as icon name:
+**方式二：自定义 SVG 图标**
+- 将 SVG 文件添加到 `src/assets/icons/`
+- 使用文件名作为图标名称：
 ```vue
 <template>
   <SvgIcon name="loading" />
 </template>
 ```
 
-## Code Style
+## 代码规范
 
 ### TypeScript
-- TypeScript strict mode enabled
-- Avoid using `any` — prefer explicit or generic types
-- Use composition API over options API
-- Use **single quotes** and **no semicolons**
-- Component order: `template` → `script` → `style`
+- 启用 TypeScript strict 模式
+- 避免使用 `any` — 优先使用显式或泛型类型
+- 使用 composition API 而非 options API
+- 使用 **单引号** 且 **不加分号**
+- 组件顺序：`template` → `script` → `style`
 
 ### Tailwind CSS + DaisyUI
 
-**Class Attribute Ordering:**
-When writing Tailwind classes, follow this order for consistency:
-1. **Layout classes**: `flex`, `grid`, `justify-*`, `items-*`, `flex-wrap`, `flex-1`, `flex-grow`, etc.
-2. **Spacing classes**: `m*`, `p*`, `mx*`, `my*`, `mb*`, `mt*`, `gap-*`, etc.
-3. **Size classes**: `w*`, `h*`, `min-w*`, `max-h*`, etc.
-4. **Other styles**: `rounded*`, `shadow*`, `border*`, `transition-*`, `transform-*`, etc.
-5. **Color classes (last)**: `bg-*`, `text-*`, `border-*`, `from-*`, `to-*`, `via-*`, `decoration-*`, etc.
+**类属性顺序：**
+编写 Tailwind 类时，请遵循以下顺序以保持一致性：
+1. **布局类**: `flex`, `grid`, `justify-*`, `items-*`, `flex-wrap`, `flex-1`, `flex-grow` 等
+2. **间距类**: `m*`, `p*`, `mx*`, `my*`, `mb*`, `mt*`, `gap-*` 等
+3. **颜色类**: `bg-*`, `text-*`, `border-*`, `from-*`, `to-*`, `via-*`, `decoration-*` 等
+4. **其他样式 (最后)**: `rounded*`, `shadow*`, `border*`, `transition-*`, `transform-*` 等
 
-**Example:**
+**示例：**
 ```vue
-<!-- Good: Layout → Spacing → Size → Other → Colors -->
+<!-- Good: 布局 → 间距 → 颜色 → 其他 -->
 <view class="flex justify-center p-6 mx-4 mt-6 text-gray-800 bg-white rounded-lg shadow-md">
 ```
 
-**DaisyUI Components:**
-- Use DaisyUI component classes for consistent styling
-- Combine with Tailwind utilities for customization
-- Refer to DaisyUI documentation: https://daisyui.com/
+**DaisyUI 组件：**
+- 使用 DaisyUI 组件类实现一致样式
+- 结合 Tailwind 工具类进行定制
+- 参考 DaisyUI 文档：https://daisyui.com/
 
-**HTML Comments:**
-- Remove all unnecessary HTML comments (e.g., `<!-- Page Title -->`, `<!-- Button Group -->`)
-- Only keep essential comments for complex business logic explanations
-- Keep code clean and self-documenting
+**HTML 注释：**
+- 移除所有不必要的 HTML 注释 (如 `<!-- 页面标题 -->`, `<!-- 按钮组 -->`)
+- 仅保留复杂业务逻辑的必要注释
+- 保持代码简洁，自文档化
 
-**Styling Best Practices:**
-- Prefer Tailwind utility classes over custom CSS
-- Use Tailwind's responsive prefixes: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
-- Use state variants: `hover:`, `active:`, `focus:`
-- For complex component styles, use `<style lang="scss" scoped>`
-- Leverage DaisyUI components for common UI patterns
+**样式最佳实践：**
+- 优先使用 Tailwind 工具类而非自定义 CSS
+- 使用 Tailwind 响应式前缀：`sm:`, `md:`, `lg:`, `xl:`, `2xl:`
+- 使用状态变体：`hover:`, `active:`, `focus:`
+- 复杂组件样式使用 `<style lang="scss" scoped>`
+- 使用 DaisyUI 组件实现常见 UI 模式
 
-### General Guidelines
-- Keep code clean, modular, and maintainable
-- Follow existing ESLint/Prettier rules
-- Use auto-imported components and hooks when available
-- Prefer functional patterns and composition over classes
-- Use meaningful variable and function names
-- Write self-documenting code
+### 通用规范
+- 保持代码简洁、模块化、可维护
+- 遵循现有 ESLint/Prettier 规则
+- 优先使用自动导入的组件和 hooks
+- 优先使用函数式模式和 composition 而非 class
+- 使用有意义的变量和函数名
+- 编写自文档化代码
 
-## Development Notes
+## UI 规范
 
-- Package manager: **pnpm** (required)
-- Source code: located in `src/`
-- Current version: 0.0.0
-- Dev server runs on port 5555
-- Production base path: `/zhengwu/` (configurable in vite.config.ts)
-- Mock data automatically available in development mode
-- SVG icons are optimized and bundled via vite-plugin-svg-icons
-- Legacy browser support for Chrome 75+ via @vitejs/plugin-legacy
+> 参考: https://www.ui-skills.com/
 
-## Build Configuration
+构建更好界面的主观约束。
 
-- Console.log statements removed in production builds
-- Debugger statements removed in production builds
-- Code comments removed in production builds
-- Manual chunks for vendor libraries (echarts, mock, vendor)
-- Tree-shaking and minification enabled
-- TypeScript type checking before build (`vue-tsc --noEmit`)
+### 技术栈
+- 优先使用 Tailwind CSS 默认值 (spacing, radius, shadows) 而非自定义值
+- 需要 JavaScript 动画时，必须使用 `motion-v` 或原生 CSS 动画
 
-## Important Notes
+### 组件
+- 具有键盘或焦点行为的组件必须使用可访问的组件原语
+- 必须优先使用项目现有的组件原语
+- 禁止在同一交互界面混合使用不同的原语系统
+- 推荐使用 DaisyUI 组件实现常见 UI 模式
+- 仅图标按钮必须添加 `aria-label`
+- 除非明确要求，否则不要手动重建键盘或焦点行为
+- 模态框和对话框必须使用 `<Teleport>` 渲染到 DOM 层级之外
 
-- This is a standard Vue 3 + Vite web project, not a uni-app project
-- Routing is handled by Vue Router, configured in `src/router/router.ts`
-- Component and composition API auto-import is configured in vite.config.ts
-- Mock API responses are available in development mode via vite-plugin-mock
-- The project uses DaisyUI for UI components, which extends Tailwind CSS
-- Always test in different browsers, especially older browsers (Chrome 75+)
-- Use Vue Query for server state management and caching
-- Use Pinia for global client state management
+### 交互
+- 破坏性或不可逆的操作必须使用 `AlertDialog` (或 DaisyUI 模态框)
+- 加载状态推荐使用骨架屏结构
+- 禁止使用 `h-screen`，应使用 `h-dvh`
+- 固定元素必须尊重 `safe-area-inset`
+- 错误信息必须显示在操作发生的位置附近
+- 禁止在 `input` 或 `textarea` 元素中阻止粘贴
+
+### 动画
+- 除非明确要求，否则不要添加动画
+- 只能动画化合成器属性 (`transform`, `opacity`)
+- 禁止动画化布局属性 (`width`, `height`, `top`, `left`, `margin`, `padding`)
+- 应避免动画化绘制属性 (`background`, `color`)，小范围 UI (文本、图标) 除外
+- 入场动画推荐使用 `ease-out`
+- 交互反馈动画绝不能超过 `200ms`
+- 循环动画必须在离开屏幕时暂停
+- 必须尊重 `prefers-reduced-motion`
+- 除非明确要求，否则不要引入自定义缓动曲线
+- 应避免动画化大型图片或全屏表面
+- 状态动画必须使用 Vue 的 `<Transition>` 和 `<TransitionGroup>` 组件
+
+### 排版
+- 标题必须使用 `text-balance`
+- 正文段落必须使用 `text-pretty`
+- 数据必须使用 `tabular-nums`
+- 密集 UI 推荐使用 `truncate` 或 `line-clamp`
+- 除非明确要求，否则不要修改 `letter-spacing` (`tracking-`)
+
+### 布局
+- 必须使用固定的 `z-index` 层级 (禁止使用任意 `z-x`)
+- 正方形元素推荐使用 `size-x` 而不是 `w-x` + `h-x`
+
+### 性能
+- 禁止动画化大型 `blur()` 或 `backdrop-filter` 表面
+- 禁止在活动动画之外应用 `will-change`
+- 禁止将 `useEffect` 用于任何可以表达为渲染逻辑的内容
+
+### 设计
+- 除非明确要求，否则不要使用渐变
+- 禁止使用紫色或多彩色渐变
+- 禁止使用发光效果作为主要视觉提示
+- 除非明确要求，否则应使用 Tailwind CSS 默认阴影层级
+- 空状态必须提供一个明确的下一个操作
+- 每个视图应限制使用一种强调色
+- 应优先使用现有主题或 Tailwind CSS 颜色令牌，而非引入新颜色
