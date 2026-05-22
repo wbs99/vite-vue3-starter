@@ -4,6 +4,7 @@
 
 :root{
   --g-nprogress-color: #1d7dfa;
+  --z-navbar: 50;
   text-autospace: normal;
 }
 

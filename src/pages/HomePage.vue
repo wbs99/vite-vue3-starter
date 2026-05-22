@@ -1,15 +1,17 @@
 <template>
-  <div class="min-h-screen px-[32px] bg-gray-100">
-    <button class="w-[686px] h-[88px] my-[60px] rounded-[410px] bg-[#E5E5E5] text-[#666666] text-[28px] font-semibold">
-      按钮
-    </button>
-
-    <button class="w-686 h-88 rounded-410 bg-[#E5E5E5] text-[#666666] text-28 font-semibold">
-      按钮
+  <div class="flex items-center justify-center min-h-screen px-32 bg-gray-100">
+    <button class="custom-btn w-686 h-88 rounded-30 text-28 font-semibold text-[#814319]" @click="router.push('/me')">
+      我的作品
     </button>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const router = useRouter()
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.custom-btn{
+  background: linear-gradient(270deg, #fff8f8 0%, #ffe3e6 37%, #feebb5 100%)
+}
+</style>

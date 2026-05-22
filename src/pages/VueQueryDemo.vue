@@ -18,7 +18,7 @@
 
     <button
       :disabled="isAddTagPending"
-      class="btn btn-primary"
+      class="bg-primary text-white px-24 py-12 rounded-8 disabled:opacity-50"
       @click="onAddTag"
     >
       <button>新增标签</button>
@@ -29,7 +29,7 @@
 
     <button
       :disabled="isUpdateTagPending"
-      class="btn btn-primary"
+      class="bg-primary text-white px-24 py-12 rounded-8 disabled:opacity-50"
       @click="() => onUpdateTag({ id: 6, tagName: '修改标签' })"
     >
       <span>更新标签</span>
@@ -43,7 +43,7 @@
         数据加载失败，请刷新页面
       </CenterDiv>
       <CenterDiv v-if="isFetchingTagPending">
-        <span class="loading loading-spinner text-info" />
+        <SvgIcon name="loading" class="animate-spin text-sky-400" />
       </CenterDiv>
     </div>
     <div v-else>
@@ -54,7 +54,7 @@
       </ul>
       <button
         :disabled="!hasMoreTag || isFetchingMoreTag"
-        class="btn btn-primary"
+        class="bg-primary text-white px-24 py-12 rounded-8 disabled:opacity-50"
         @click="() => fetchMoreTag()"
       >
         <span v-if="isFetchingMoreTag">正在加载更多数据...</span>

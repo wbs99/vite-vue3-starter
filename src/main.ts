@@ -6,6 +6,7 @@ import App from './App.vue'
 import { router } from './router/router'
 import { directive } from './utils/directive'
 import 'virtual:svg-icons-register'
+import './assets/stylesheets/safe-area.css'
 import './assets/stylesheets/app.css'
 
 const pinia = createPinia()
