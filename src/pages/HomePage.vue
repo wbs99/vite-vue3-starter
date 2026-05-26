@@ -13,18 +13,20 @@
           <span class="text-26 text-[#624710]">
             我的作品
           </span>
-          <SvgIcon name="mangosteen-icon" color="#624710" class="w-24 h-24" />
+          <SvgIcon name="mangosteen-icon" color="#624710" class="size-24" />
         </div>
       </div>
     </div>
 
     <div class="w-full h-470">
-      <img src="../assets/images/home-banner-image.png" alt="home-banner" class="w-full h-full">
+      <img src="../assets/images/home-banner-image.png" alt="home-banner" class="size-full">
     </div>
 
     <div id="sticky-anchor" ref="stickyAnchorRef" class="sticky z-[calc(var(--z-navbar)-1)] tabs-container" :style="tabsContainerStyle">
       <div class="overflow-hidden bg-white rounded-t-50">
-        111111
+        <div class="flex pl-32 my-32 text-28">
+          tabs
+        </div>
       </div>
     </div>
 
