@@ -17,6 +17,7 @@ dist-ssr
 
 # Agent skills (symlinks, platform-specific)
 .claude/skills/
+.agents/
 
 # Editor directories and files
 .vscode/*
