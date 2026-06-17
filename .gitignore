@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# jj (Jujutsu) version control data
+.jj/
+
+# Agent skills (symlinks, platform-specific)
+.claude/skills/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

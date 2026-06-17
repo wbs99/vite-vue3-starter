@@ -2,7 +2,7 @@
   <div>
     <CustomNav title="我的" />
     <div class="pt-nav-top pb-safe min-h-dvh bg-[#EDEDED]">
-      <div class="p-32 m-16 bg-white rounded-40 rounded-12">
+      <div class="p-32 m-16 rounded-40 bg-white">
         <div class="flex items-center gap-24">
           <div class="flex items-center justify-center rounded-full size-96 shrink-0 bg-[#07C160]">
             <SvgIcon name="line-md:person" class="w-48 h-48 text-white" />
@@ -25,7 +25,7 @@
         数据加载失败，请刷新页面
       </div>
       <template v-else>
-        <div v-for="tagItem in flattenedTagList" :key="tagItem.id" class="mx-16 mb-12 bg-white p-28 rounded-12">
+        <div v-for="tagItem in flattenedTagList" :key="tagItem.id" class="mx-16 mb-12 p-28 rounded-12 bg-white">
           <p class="text-30 text-[#333333] text-balance">
             {{ tagItem.tagName }}
           </p>
